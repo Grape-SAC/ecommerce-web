@@ -2,7 +2,11 @@ import styles from './BottomNavBar.module.css';
 import Link from 'next/link';
 import { HomeIcon, Squares2X2Icon, ShoppingCartIcon, CubeIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 
-const BottomNavBar = () => {
+type HeaderProps = {
+    className?: string;
+};
+
+const BottomNavBar: React.FC<HeaderProps> = ({ className }) => {
     return (
         <nav className={styles.nav}>
             <ul className={styles.navList}>

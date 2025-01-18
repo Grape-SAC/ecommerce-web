@@ -5,10 +5,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary-color: #03A9F4;
+  --primary-color: #03a9f4;
+  --dark-primary-color: #0288d1;
   --color-text-primary: #212121;
+  --color-text-red: #ff5252;
   --color-text-secondary: #757575;
-  --color-divider: #BDBDBD;
+  --color-divider: #bdbdbd;
   --color-icon: #727272;
 }
 
@@ -22,5 +24,29 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px; /* Tamaño de fuente base */
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "contenido"
+    "bottomNavBar";
+  height: 100vh;
+}
+
+.header {
+  grid-area: header;
+}
+
+.contenido {
+  grid-area: contenido;
+  padding: 16px;
+}
+
+.bottomNavBar {
+  grid-area: bottomNavBar;
 }

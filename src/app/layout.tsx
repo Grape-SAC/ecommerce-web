@@ -1,18 +1,12 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import BottomNavBar from "@/components/BottomNavBar/BottomNavBar";
+import { Roboto } from 'next/font/google';
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const raleway = Roboto({
+  weight: '400', // Usar peso SemiBold
+  subsets: ['latin'], // Compatibilidad con caracteres
 });
 
 export const metadata: Metadata = {
@@ -27,10 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header />
-        {children}
-        <BottomNavBar />
+      <body className={`${raleway.className} antialiased layout-grid`}>
+        <Header className="header" />
+        <main className="contenido">{children}</main>
+        <BottomNavBar className="bottomNavBar" />
       </body>
     </html>
   );

@@ -1,0 +1,40 @@
+.productList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 productos por fila */
+  gap: 16px; /* Espacio entre productos */
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.productImage {
+  border-radius: 5px;
+}
+
+.productName {
+  padding-top: 5px;
+  min-height: 3rem; /* Define una altura mínima para el nombre del producto */
+  overflow: hidden; /* Evita desbordamientos si el texto es demasiado largo */
+}
+
+.productPrice {
+  color: var(--color-text-red);
+  margin: 8px 0;
+  font-weight: bold;
+}
+
+.btnAddToCart {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 0px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btnAddToCart:hover {
+  background-color: var(--dark-primary-color);
+}
