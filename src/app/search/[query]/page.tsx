@@ -1,10 +1,11 @@
 
-import { ProductSummaryDto } from '../product-summary-dto';
+import { ProductSummaryDto } from '../product-summary.dto';
 import { searchProducts } from '../service';
 import ProductList from './ProductList';
 
 const SearchPage = async ({ params }: { params: { query: string } }) => {
     const query = params?.query || '';
+    
     let products: ProductSummaryDto[] = await searchProducts(query);
 
     return (

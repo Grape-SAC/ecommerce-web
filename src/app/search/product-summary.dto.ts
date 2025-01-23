@@ -1,5 +1,7 @@
 export interface ProductSummaryDto {
     id: number;
     name: string;
-    sale_price: number;
+    salePrice: number;
+    imageMain: string;
+    slug: string;
 }
