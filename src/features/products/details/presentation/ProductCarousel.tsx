@@ -1,7 +1,7 @@
 'use client';
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { ProductImageDto } from "../product-image.dto";
+import { ProductImageDto } from "../domain/product-image.dto";
 import 'swiper/css';
 import { useState, useRef } from 'react';
 import styles from './ProductCarousel.module.css';
@@ -28,6 +28,7 @@ const ProductCarousel = ({ images }: { images: ProductImageDto[] }) => {
                 onSlideChange={(swiper) => setCurrentImageIndex(swiper.activeIndex)} // Cambiar la imagen al deslizar
                 initialSlide={currentImageIndex} // Iniciar en la imagen actual
                 ref={swiperRef} // Referencia a la instancia de Swiper
+                className={styles.carouselParent}
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={index}>
@@ -41,26 +42,24 @@ const ProductCarousel = ({ images }: { images: ProductImageDto[] }) => {
             </Swiper>
 
             {/* Carrusel de miniaturas */}
-            <div className="mt-4">
-                <Swiper
-                    spaceBetween={10}
-                    slidesPerView={5}  
-                    freeMode={true}  // Permite el desplazamiento libre sin un slide fijo
-                    watchSlidesProgress={true}  // Detecta cuando una miniatura se desplaza fuera de vista
-                    className="swiper-thumbnails"
-                >
-                    {images.map((image, index) => (
-                        <SwiperSlide key={index}>
-                            <img
-                                src={`http://localhost:8080/images/${image.name}`}
-                                alt={`Miniatura ${index + 1}`}
-                                className="w-full h-auto object-cover cursor-pointer"
-                                onClick={() => handleThumbnailClick(index)} // Actualizar imagen principal
-                            />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
+            <Swiper
+                spaceBetween={10}
+                slidesPerView={5}
+                freeMode={true}  // Permite el desplazamiento libre sin un slide fijo
+                watchSlidesProgress={true}  // Detecta cuando una miniatura se desplaza fuera de vista
+                className="swiper-thumbnails"
+            >
+                {images.map((image, index) => (
+                    <SwiperSlide key={index}>
+                        <img
+                            src={`http://localhost:8080/images/${image.name}`}
+                            alt={`Miniatura ${index + 1}`}
+                            className="w-full h-auto object-cover cursor-pointer"
+                            onClick={() => handleThumbnailClick(index)} // Actualizar imagen principal
+                        />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
 
             {/* Renderizar miniaturas como fallback */}
             <noscript>

@@ -1,6 +1,6 @@
+import { ProductDetailDto } from "@/features/products/details/domain/product-detail.dto";
 import config from "@/config";
-import { ProductDetailDto } from "./product-detail.dto";
-import { HttpStatus } from "@/utils/http-status";
+import { HttpStatus } from "@/shared/http-status";
 
 export const getProductDetail = async (slug: string): Promise<ProductDetailDto | null> => {
     const response = await fetch(`${config.apiBaseUrl}/products/slug/${slug}`);

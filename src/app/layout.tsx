@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import Header from "@/components/Header/Header";
-import BottomNavBar from "@/components/BottomNavBar/BottomNavBar";
 import { Roboto } from 'next/font/google';
 
 const raleway = Roboto({
-  weight: '400', // Usar peso SemiBold
+  weight: ['400', '700'], // Usar peso SemiBold
   subsets: ['latin'], // Compatibilidad con caracteres
 });
 
@@ -21,10 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${raleway.className} antialiased layout-grid`}>
-        <Header className="header" />
-        <main className="contenido">{children}</main>
-        <BottomNavBar className="bottomNavBar" />
+      <body className={`${raleway.className} antialiased`}>
+        {children}
       </body>
     </html>
   );

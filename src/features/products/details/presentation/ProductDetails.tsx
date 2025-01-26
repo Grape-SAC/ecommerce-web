@@ -1,0 +1,30 @@
+import { ProductDetailDto } from '../domain/product-detail.dto';
+import ProductCarousel from './ProductCarousel';
+import styles from './ProductDetails.module.css';
+import QuantitySelector from '@/components/ui/QuantitySelector/QuantitySelector';
+
+const ProductDetails = ({ product }: { product: ProductDetailDto }) => {
+    const formatDescription = (text: string) => {
+        return text.split('\n').map((line, index) => (
+            <span key={index}>
+                {line}
+                <br />
+            </span>
+        ));
+    };
+
+    return (
+        <section>
+            <ProductCarousel images={product.images} />
+            <h1 className={styles.title}>{product.name}</h1>
+            <p className={styles.productPrice}>
+                <data value={`${product.salePrice}`}>S/.{product.salePrice}</data>
+            </p>
+            <QuantitySelector />
+            <button className={`${styles.btnAgregar} btnPrimary btnFull`}>AGREGAR A MI CARRITO</button>
+            <p className={styles.descriptionText}>{formatDescription(product.description)}</p>
+        </section>
+    );
+};
+
+export default ProductDetails;

@@ -1,6 +1,6 @@
 import config from "@/config";
-import { ProductSummaryDto } from "./product-summary.dto";
-import { HttpStatus } from "@/utils/http-status";
+import { ProductSummaryDto } from "@/features/products/search/domain/product-summary.dto";
+import { HttpStatus } from "@/shared/http-status";
 
 
 export const searchProducts = async (query: string): Promise<ProductSummaryDto[]> => {

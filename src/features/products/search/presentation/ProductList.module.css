@@ -25,16 +25,3 @@
   font-weight: bold;
 }
 
-.btnAddToCart {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 0px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.btnAddToCart:hover {
-  background-color: var(--dark-primary-color);
-}

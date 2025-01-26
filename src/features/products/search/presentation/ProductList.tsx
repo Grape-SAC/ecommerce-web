@@ -1,8 +1,8 @@
-import { ProductSummaryDto } from '@/app/search/product-summary.dto';
 import React from 'react';
 import styles from './ProductList.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ProductSummaryDto } from '@/features/products/search/domain/product-summary.dto';
 
 const ProductList = ({ products }: { products: ProductSummaryDto[] }) => (
     <ul className={styles.productList}>
@@ -19,10 +19,10 @@ const ProductList = ({ products }: { products: ProductSummaryDto[] }) => (
                             className={styles.productImage}
                         />
                         <h3 className={styles.productName}>{product.name}</h3>
-                        <p className={styles.productPrice}>S/. {product.salePrice}</p>
-                        <button className={styles.btnAddToCart} aria-label={`Agregar ${product.name} al carrito`}>
-                            AGREGAR
-                        </button>
+                        <p className={styles.productPrice}>
+                            <data value={`${product.salePrice}`}>S/.{product.salePrice}</data> 
+                        </p>
+                        <button className="btnPrimary">AGREGAR</button>
                     </article>
                 </Link>
             </li>

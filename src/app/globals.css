@@ -24,7 +24,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-size: 14px; /* Tamaño de fuente base */
+  font-size: 14px;
 }
 
 .layout-grid {
@@ -50,4 +50,21 @@ body {
 
 .bottomNavBar {
   grid-area: bottomNavBar;
+}
+
+.btnPrimary {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 5px 0px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btnPrimary:hover {
+  background-color: var(--dark-primary-color);
+}
+
+.btnFull {
+  width: 100%;
 }
