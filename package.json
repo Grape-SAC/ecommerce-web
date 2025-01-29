@@ -9,15 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/runtime": "^7.26.7",
     "@heroicons/react": "^2.2.0",
     "axios": "^1.7.9",
     "ecommerce-web": "file:",
+    "inversify": "^6.2.1",
     "next": "^15.1.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "reflect-metadata": "^0.2.2",
     "swiper": "^11.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.7",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.25.9",
+    "@babel/plugin-transform-private-methods": "^7.25.9",
+    "@babel/plugin-transform-runtime": "^7.25.9",
+    "@types/inversify": "^2.0.32",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

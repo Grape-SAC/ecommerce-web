@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './ProductList.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ProductSummaryDto } from '@/features/products/search/domain/product-summary.dto';
+import { ProductSummaryDto } from '@/features/products/search/domain/dto/product-summary.dto';
 
 const ProductList = ({ products }: { products: ProductSummaryDto[] }) => (
     <ul className={styles.productList}>

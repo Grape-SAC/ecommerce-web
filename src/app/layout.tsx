@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from 'next/font/google';
+import "reflect-metadata";
 
 const raleway = Roboto({
   weight: ['400', '700'], // Usar peso SemiBold

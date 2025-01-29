@@ -1,17 +1,17 @@
-import config from "@/config";
-import { ProductSummaryDto } from "@/features/products/search/domain/product-summary.dto";
-import { HttpStatus } from "@/shared/http-status";
+import { inject, injectable } from "inversify";
+import { ProductSummaryDto } from "../domain/dto/product-summary.dto";
+import type { IProductSearchRepository } from "../domain/repositories/product-search.repository.interface";
+import { TYPES } from "@/types";
+import { IProductSearchService } from "../domain/services/product-search.service.interface";
 
+@injectable()
+export class ProductSearchService implements IProductSearchService {
+    constructor(
+        @inject(TYPES.IProductSearchRepository) 
+        private readonly repository: IProductSearchRepository
+    ) {}
 
-export const searchProducts = async (query: string): Promise<ProductSummaryDto[]> => {
-    const response: Response = await fetch(`${config.apiBaseUrl}/products/search?param=${query}`);
-
-    switch(response.status) {
-        case HttpStatus.OK:
-            return await response.json();
-        case HttpStatus.NO_CONTENT:
-            return [];
-        default:
-            throw new Error('Algo salió mal. Estamos trabajando para solucionar el problema. Por favor, inténtalo de nuevo más tarde.');
+    async execute(query: string): Promise<ProductSummaryDto[]> {
+        return this.repository.searchProducts(query);
     }
-};
+}
