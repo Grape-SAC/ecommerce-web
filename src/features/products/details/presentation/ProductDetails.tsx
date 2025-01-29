@@ -1,4 +1,4 @@
-import { ProductDetailDto } from '../domain/product-detail.dto';
+import { ProductDetailDto } from '../domain/dto/product-detail.dto';
 import ProductCarousel from './ProductCarousel';
 import styles from './ProductDetails.module.css';
 import QuantitySelector from '@/components/ui/QuantitySelector/QuantitySelector';

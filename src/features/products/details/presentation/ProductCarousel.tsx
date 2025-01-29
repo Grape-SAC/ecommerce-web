@@ -1,7 +1,7 @@
 'use client';
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { ProductImageDto } from "../domain/product-image.dto";
+import { ProductImageDto } from "../domain/dto/product-image.dto";
 import 'swiper/css';
 import { useState, useRef } from 'react';
 import styles from './ProductCarousel.module.css';

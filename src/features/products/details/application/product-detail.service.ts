@@ -1,16 +1,17 @@
-import { ProductDetailDto } from "@/features/products/details/domain/product-detail.dto";
-import config from "@/config";
-import { HttpStatus } from "@/shared/http-status";
+import { ProductDetailDto } from "@/features/products/details/domain/dto/product-detail.dto";
+import { injectable } from "inversify";
+import { IProductDetailService } from "../domain/services/product-detail.service.interface";
+import { inject } from "inversify";
+import { TYPES } from "@/types";
+import type { IProductDetailRepository } from "../domain/repositories/product-detail.repository.interface";
+@injectable()
+export class ProductDetailService implements IProductDetailService {
+    constructor(
+        @inject(TYPES.IProductDetailRepository) 
+        private readonly repository: IProductDetailRepository
+    ) {}
 
-export const getProductDetail = async (slug: string): Promise<ProductDetailDto | null> => {
-    const response = await fetch(`${config.apiBaseUrl}/products/slug/${slug}`);
-
-    switch (response.status) {
-        case HttpStatus.OK:
-            return await response.json();
-        case HttpStatus.NOT_FOUND:
-            return null;
-        default:
-            throw new Error('Algo salió mal. Estamos trabajando para solucionar el problema. Por favor, inténtalo de nuevo más tarde.');
+    async execute(slug: string): Promise<ProductDetailDto | null> {
+        return this.repository.getProductDetail(slug);
     }
-};
+}

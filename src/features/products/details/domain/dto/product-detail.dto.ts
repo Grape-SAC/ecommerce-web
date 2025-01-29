@@ -1,5 +1,6 @@
 import { ProductImageDto } from "./product-image.dto";
 
+
 export interface ProductDetailDto {
     id: number;
     name: string;
