@@ -25,3 +25,9 @@
   font-weight: bold;
 }
 
+.btnAddToCartButton {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  height: 31px !important;
+  font-size: 14px !important;
+}

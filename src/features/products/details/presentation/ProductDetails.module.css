@@ -5,13 +5,6 @@
     font-weight: 700;    
 }
 
-.btnAgregar {
-    margin-top: 10px;
-    margin-bottom: 14px;
-    height: 40px;
-    font-size: 13px;    
-}
-
 .productPrice {
     color: var(--color-text-red);
     font-weight: 700;

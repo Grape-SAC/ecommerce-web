@@ -1,3 +1,4 @@
+import { Providers } from "@/store/providers";
 import type { Metadata } from "next";
 import { Roboto } from 'next/font/google';
 
@@ -19,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${raleway.className} antialiased`}>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

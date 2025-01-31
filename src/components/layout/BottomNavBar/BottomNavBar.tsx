@@ -1,12 +1,14 @@
 import styles from './BottomNavBar.module.css';
 import Link from 'next/link';
 import { HomeIcon, Squares2X2Icon, ShoppingCartIcon, CubeIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import CartCounter from '@/components/ui/CartCounter/CartCounter';
 
 type HeaderProps = {
     className?: string;
 };
 
 const BottomNavBar: React.FC<HeaderProps> = ({ className }) => {
+
     return (
         <nav className={styles.nav}>
             <ul className={styles.navList}>
@@ -24,7 +26,10 @@ const BottomNavBar: React.FC<HeaderProps> = ({ className }) => {
                 </li>
                 <li className={styles.navItem}>
                     <Link href="/cart" aria-label="Ver carrito de compras">
-                        <ShoppingCartIcon className={styles.icon} />
+                        <div className={styles.cartIconContainer}>
+                            <ShoppingCartIcon className={styles.icon} />
+                            <CartCounter />                            
+                        </div>
                         <span>Carrito</span>
                     </Link>
                 </li>

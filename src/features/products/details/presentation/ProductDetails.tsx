@@ -2,6 +2,7 @@ import { ProductDetailDto } from '../domain/dto/product-detail.dto';
 import ProductCarousel from './ProductCarousel';
 import styles from './ProductDetails.module.css';
 import QuantitySelector from '@/components/ui/QuantitySelector/QuantitySelector';
+import AddToCartButton from '@/components/ui/AddToCartButton/AddToCartButton';
 
 const ProductDetails = ({ product }: { product: ProductDetailDto }) => {
     const formatDescription = (text: string) => {
@@ -21,7 +22,7 @@ const ProductDetails = ({ product }: { product: ProductDetailDto }) => {
                 <data value={`${product.salePrice}`}>S/.{product.salePrice}</data>
             </p>
             <QuantitySelector />
-            <button className={`${styles.btnAgregar} btnPrimary btnFull`}>AGREGAR A MI CARRITO</button>
+            <AddToCartButton product={product} />
             <p className={styles.descriptionText}>{formatDescription(product.description)}</p>
         </section>
     );

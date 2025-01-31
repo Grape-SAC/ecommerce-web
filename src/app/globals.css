@@ -6,6 +6,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --primary-color: #03a9f4;
+  --accent-color: #FF5722;
   --dark-primary-color: #0288d1;
   --color-text-primary: #212121;
   --color-text-red: #ff5252;
@@ -54,6 +55,15 @@ body {
 
 .btnPrimary {
   background-color: var(--primary-color);
+  color: white;
+  padding: 5px 0px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btnAccent {
+  background-color: var(--accent-color);
   color: white;
   padding: 5px 0px;
   border-radius: 4px;
