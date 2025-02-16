@@ -13,7 +13,7 @@ export class ProductDetailRepository implements IProductDetailRepository {
         switch (response.status) {
             case HttpStatus.OK:
                 return await response.json();
-            case HttpStatus.NO_CONTENT:
+            case HttpStatus.NOT_FOUND:
                 return null;
             default:
                 throw new Error('Algo salió mal. Estamos trabajando para solucionar el problema. Por favor, inténtalo de nuevo más tarde.');

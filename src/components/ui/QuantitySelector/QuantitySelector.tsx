@@ -1,18 +1,22 @@
-'use client'; // Importante para habilitar el uso de hooks del cliente
+'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './QuantitySelector.module.css';
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { useDispatch } from 'react-redux';
+import { updateQuantity } from '@/store/slices/cart.slice';
 
-const QuantitySelector: React.FC = () => {
-  const [quantity, setQuantity] = useState(1);
+const QuantitySelector: React.FC<{ id: number; quantity: number }> = ({ id, quantity }) => {
+  const dispatch = useDispatch();
 
   const handleIncrease = () => {
-    setQuantity((prev) => prev + 1);
+    dispatch(updateQuantity({ id, quantity: quantity + 1 }));
   };
 
   const handleDecrease = () => {
-    setQuantity((prev) => Math.max(1, prev - 1)); // Evitar valores menores a 1
+    if (quantity > 1) {
+      dispatch(updateQuantity({ id, quantity: Math.max(1, quantity - 1) }));
+    }
   };
 
   return (

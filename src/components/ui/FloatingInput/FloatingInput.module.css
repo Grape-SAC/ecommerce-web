@@ -1,0 +1,56 @@
+.formFloatingGroup {
+    margin-bottom: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.formControl {
+    width: 100%;
+    height: 40px;
+    font-size: 15px;
+    border: 0;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.formControl:focus-visible {
+    border-width: 2px;
+    border-bottom-color: var(--primary-color);
+}
+
+.formIcon {
+    width: 1.4rem;
+    height: 1.4rem;
+    color: rgb(0, 0, 0, 0.5);
+    margin-right: 10px;
+}
+
+.formLabel {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: rgb(0, 0, 0, 0.5);
+    cursor: auto;
+    transition: all 0.1s;
+}
+
+.formLabelIcon {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: rgb(0, 0, 0, 0.5);
+    cursor: auto;
+    transition: all 0.1s;
+    padding-left: 27px;
+}
+
+.filled {
+    color: rgb(0, 0, 0, 0.5);
+    top: -12px;
+}
+
+.active {
+    color: var(--primary-color);
+    top: -12px;
+}

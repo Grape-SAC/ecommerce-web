@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Roboto } from 'next/font/google';
 
 const raleway = Roboto({
-  weight: ['400', '700'], // Usar peso SemiBold
+  weight: ['400', '500', '700'], // Usar peso SemiBold
   subsets: ['latin'], // Compatibilidad con caracteres
 });
 

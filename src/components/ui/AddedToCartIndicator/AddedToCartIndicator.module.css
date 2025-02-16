@@ -1,0 +1,8 @@
+.indicator {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}

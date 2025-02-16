@@ -1,7 +1,6 @@
 import { ProductDetailDto } from '../domain/dto/product-detail.dto';
 import ProductCarousel from './ProductCarousel';
 import styles from './ProductDetails.module.css';
-import QuantitySelector from '@/components/ui/QuantitySelector/QuantitySelector';
 import AddToCartButton from '@/components/ui/AddToCartButton/AddToCartButton';
 
 const ProductDetails = ({ product }: { product: ProductDetailDto }) => {
@@ -21,7 +20,6 @@ const ProductDetails = ({ product }: { product: ProductDetailDto }) => {
             <p className={styles.productPrice}>
                 <data value={`${product.salePrice}`}>S/.{product.salePrice}</data>
             </p>
-            <QuantitySelector />
             <AddToCartButton product={product} />
             <p className={styles.descriptionText}>{formatDescription(product.description)}</p>
         </section>

@@ -1,0 +1,18 @@
+.cartContainer {
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Título, lista de productos, resumen */
+    height: 100vh; /* Toma toda la altura de la pantalla */
+}
+
+.cartItems {
+    overflow-y: auto; /* Permite scroll si hay muchos productos */
+    /* padding-bottom: 80px; Espacio para no tapar los productos con el resumen */
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    font-size: 18px;
+    font-weight:500;
+    padding: 15px;
+}
