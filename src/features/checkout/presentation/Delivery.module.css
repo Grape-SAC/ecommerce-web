@@ -1,0 +1,73 @@
+.container {
+    padding: 30px 15px 15px 15px;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--primary-color);
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.radioContainer {
+    width: 100%;
+}
+
+.radio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}
+
+
+.optionsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 30px;
+}
+
+.optionButton {
+    padding: 10px 20px;
+    border: 1px solid none;
+    background: #E0E0E0;
+    color: #212121;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 10px;
+}
+
+.optionButton svg {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.optionButton.active {
+    background: #212121;
+    color: white;
+}
+
+.deliveryDetails {
+    margin-top: 10px;
+}
+
+.buttonContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0px 15px 15px 15px;
+}

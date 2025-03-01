@@ -24,7 +24,7 @@ const CartSummary = ({ items }: { items: CartItem[] }) => {
                 <ArrowLeftIcon className={styles.icon}/>
                 SEGUIR COMPRANDO
             </button>
-            <button className={`${styles.checkoutButton} btn btnPrimary btnFull`} onClick={() => router.push("/checkout")}>
+            <button className={`${styles.checkoutButton} btn btnPrimary btnFull`} onClick={() => router.push("/checkout/identification")}>
                 CONTINUAR CON EL PAGO
             </button>
         </div>

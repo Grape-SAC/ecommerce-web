@@ -10,10 +10,12 @@ const SearchPage = async ({ params }: { params: { query: string } }) => {
     
     let products: ProductSummaryDto[] = await service.execute(params.query);
 
+    if (products.length === 0) {
+        return <p>No se encontraron productos.</p>;
+    }
+
     return (
-        <div>
-            {products.length > 0 ? <ProductList products={products} /> : <p>No se encontraron productos.</p>}
-        </div>
+        <ProductList products={products} />
     );
 };
 

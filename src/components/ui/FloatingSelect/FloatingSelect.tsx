@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './FloatingSelect.module.css';
 import { useState } from "react";
 

@@ -54,3 +54,9 @@
     color: var(--primary-color);
     top: -12px;
 }
+
+.textarea {
+    resize: vertical; /* Permite cambiar el tamaño solo en vertical */
+    height: 100px; /* Altura predeterminada */
+    padding: 10px;
+}
