@@ -15,6 +15,9 @@ const theme = createTheme({
             light: "#E1F5FE",
             contrastText: "white",
         },
+        success: {
+            main: "#00C853"
+        }
     },
     components: {
         // MuiInputLabel: {
