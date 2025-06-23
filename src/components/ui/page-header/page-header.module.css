@@ -1,0 +1,24 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.backLink {
+    position: absolute;
+    left: 0;
+    top: 1px;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+}

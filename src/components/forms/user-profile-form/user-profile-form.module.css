@@ -1,0 +1,15 @@
+.form{
+    height: 100vh;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0px 10px 10px 10px;
+}
+
+.footer button {
+    font-size: 13px;
+}

@@ -1,6 +1,6 @@
-import { Providers } from "@/store/providers";
 import type { Metadata } from "next";
 import { Roboto } from 'next/font/google';
+import ClientLayout from "../config/ngprogress/client-layout";
 
 const raleway = Roboto({
   weight: ['400', '500', '700'], // Usar peso SemiBold
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${raleway.className} antialiased`}>
-        <Providers>{children}</Providers>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

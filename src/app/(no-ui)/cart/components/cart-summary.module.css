@@ -1,0 +1,15 @@
+.summaryContainer {
+    border-top: 1px solid var(--color-divider);
+}
+
+.totalContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.summaryContainer button {
+    font-size: 13px;
+}

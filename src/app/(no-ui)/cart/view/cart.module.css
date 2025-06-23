@@ -1,0 +1,11 @@
+.cartContainer {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+    padding: 20px 15px 15px 15px;
+}
+
+.cartItems {
+    overflow-y: auto;
+    padding-top: 20px;
+}
