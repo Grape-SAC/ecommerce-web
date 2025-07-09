@@ -5,7 +5,7 @@ import CheckoutStep from '@/components/ui/checkout-step/checkout-step';
 import PageHeader from '@/components/ui/page-header/page-header';
 import { AuthUserResponseType } from '@/app/(no-ui)/auth/register/types/auth-user-response.type';
 import UserProfileUpdateForm from '@/components/forms/user-profile-form/user-profile-form';
-import RegisterForm from '@/components/forms/register-form/register-form';
+import UserRegisterForm from '@/components/forms/user-register-form/user-register-form';
 
 const CheckoutIdentificationView = ({ authUser }: { authUser: AuthUserResponseType | null }) => {
     return (
@@ -17,7 +17,7 @@ const CheckoutIdentificationView = ({ authUser }: { authUser: AuthUserResponseTy
             {authUser ? (
                 <UserProfileUpdateForm authUser={authUser} />
             ) : (
-                <RegisterForm />
+                <UserRegisterForm />
             )}
         </div>
     );

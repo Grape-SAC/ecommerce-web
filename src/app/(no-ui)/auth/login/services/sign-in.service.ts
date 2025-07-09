@@ -14,7 +14,7 @@ export async function signIn(request: SignInRequestType): Promise<AuthUserRespon
     });
 
     switch (response.status) {
-        case HttpStatus.CREATED: {
+        case HttpStatus.OK: {
             const apiResponse: ApiResponseOK<AuthUserResponseType> = await response.json();
 
             return apiResponse.data as AuthUserResponseType;
