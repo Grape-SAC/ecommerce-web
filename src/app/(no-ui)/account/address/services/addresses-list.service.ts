@@ -14,8 +14,6 @@ export async function listAllUserAddresses(): Promise<UserAddressListType[]> {
         }
     });
 
-    console.log("STATUS", response.status);
-
     switch (response.status) {
         case HttpStatus.OK: {
             const apiResponse: ApiResponseOK<UserAddressListType[]> = await response.json();

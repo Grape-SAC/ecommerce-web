@@ -15,6 +15,8 @@ import { useUserAddressCreate } from '@/app/(no-ui)/account/address/hooks/use-us
 import { UserAddressFormType } from '@/app/(no-ui)/account/address/types/user-address-form.type';
 import { userAddressFormValidation } from '@/app/(no-ui)/account/address/validation/user-address-form.validation';
 import { UserAddressSaveType } from '@/app/(no-ui)/account/address/types/user-address-save.type';
+import { useDispatch } from 'react-redux';
+import { setShippingPrice } from '@/store/slices/checkout.slice';
 
 const UserAddressCreateForm = () => {
     const router = useRouter();
@@ -25,6 +27,7 @@ const UserAddressCreateForm = () => {
     const { provinces } = useProvinceList(departmentId);
     const { districts } = useDistrictList(provinceId);
     const { execute: doUserAddressCreate, loading, error } = useUserAddressCreate();
+    const dispatch = useDispatch();
 
     const {
         control,
@@ -150,6 +153,14 @@ const UserAddressCreateForm = () => {
                                 {...field}
                                 labelId="select-district-label"
                                 label="Distrito"
+                                onChange={(e) => {
+                                    const value = e.target.value;
+                                    field.onChange(value);
+                                    const selectedDistrict = districts.find(x => x.id === value);
+                                    const deliveryPrice = selectedDistrict?.deliveryPrice ?? 0;
+
+                                    dispatch(setShippingPrice(deliveryPrice));
+                                }}
                             >
                                 {districts.map(x => (
                                     <MenuItem key={x.id} value={x.id}>

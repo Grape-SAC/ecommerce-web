@@ -11,25 +11,29 @@ import Image from 'next/image';
 import NProgress from 'nprogress';
 import { CartItemType } from '@/app/(no-ui)/cart/types/cart-item.type';
 import PageHeader from '@/components/ui/page-header/page-header';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 const PaymentView = ({ cartItems }: { cartItems: CartItemType[] }) => {
     const router = useRouter();
     const [payMethod, setDeliveryMethod] = useState('yape');
+    const shippingPrice: number = useSelector((state: RootState) => state.checkout.shippingPrice);
+    const userAddressId: string | null = useSelector((state: RootState) => state.checkout.userAddressId);
 
     const subtotal = useMemo(() => {
         return cartItems.reduce((acumulado, item) => acumulado + item.price * item.quantity, 0);
     }, [cartItems]);
 
-    const shippingCost = 15;
-
     const calculateTotal = useMemo(() => {
-        return subtotal + shippingCost;
-    }, [subtotal]);
+        return subtotal + Number(shippingPrice || 0);
+    }, [subtotal, shippingPrice]);
 
     return (
         <div className={styles.container}>
             <PageHeader title="Proceso de Pago" backHref="/checkout/delivery" />
+
             <CheckoutStep currentStep={2} stepTitles={['Identificación', 'Envío', 'Método de pago']} />
+
             <FormControl component="fieldset" className={styles.radioContainer}>
                 <RadioGroup value={payMethod} onChange={(e) => setDeliveryMethod(e.target.value)}>
                     <Box className={styles.radio}>
@@ -76,7 +80,7 @@ const PaymentView = ({ cartItems }: { cartItems: CartItemType[] }) => {
                     </div>
                     <div className={styles.summaryRow}>
                         <span>Costo de Envío:</span>
-                        <span>S/ {shippingCost.toFixed(2)}</span>
+                        <span>S/ {Number(shippingPrice || 0).toFixed(2)}</span>
                     </div>
                     <div className={styles.summaryTotal}>
                         <strong>Total:</strong>
@@ -87,10 +91,11 @@ const PaymentView = ({ cartItems }: { cartItems: CartItemType[] }) => {
             <div className={styles.igvNote}>
                 * El total incluye IGV (18%)
             </div>
+            <h4>user address id: {userAddressId}</h4>
             <div className={styles.buttonContainer}>
                 <Button
                     variant="contained"
-                    color="primary"
+                    color="success"
                     fullWidth
                 >
                     FINALIZAR MI COMPRA

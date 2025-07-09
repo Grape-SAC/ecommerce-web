@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './user-address-update-form.module.css'; 
+import styles from './user-address-update-form.module.css';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import {
@@ -18,12 +18,10 @@ import { userAddressFormValidation } from '@/app/(no-ui)/account/address/validat
 import { UserAddressFormType } from '@/app/(no-ui)/account/address/types/user-address-form.type';
 import { UserAddressListType } from '@/app/(no-ui)/account/address/types/user-address-list.type';
 import { useUserAddressUpdate } from '@/app/(no-ui)/account/address/hooks/use-user-address-update';
+import { useDispatch } from 'react-redux';
+import { setShippingPrice } from '@/store/slices/checkout.slice';
 
-type Props = {
-    address: UserAddressListType;
-};
-
-const UserAddressUpdateForm = ({ userAddress }: {userAddress: UserAddressListType}) => {
+const UserAddressUpdateForm = ({ userAddress }: { userAddress: UserAddressListType }) => {
     const router = useRouter();
     const [departmentId, setDepartmentId] = useState(userAddress.departmentId.toString());
     const [provinceId, setProvinceId] = useState(userAddress.provinceId.toString());
@@ -33,6 +31,7 @@ const UserAddressUpdateForm = ({ userAddress }: {userAddress: UserAddressListTyp
     const { provinces } = useProvinceList(departmentId);
     const { districts } = useDistrictList(provinceId);
     const { execute: doUserAddressUpdate, loading, error } = useUserAddressUpdate();
+    const dispatch = useDispatch();
 
     const {
         control,
@@ -169,6 +168,14 @@ const UserAddressUpdateForm = ({ userAddress }: {userAddress: UserAddressListTyp
                                 {...field}
                                 labelId="select-district-label"
                                 label="Distrito"
+                                onChange={(e) => {
+                                    const value = e.target.value;
+                                    field.onChange(value);
+                                    const selectedDistrict = districts.find(x => x.id === value);
+                                    const deliveryPrice = selectedDistrict?.deliveryPrice ?? 0;
+
+                                    dispatch(setShippingPrice(deliveryPrice));
+                                }}
                             >
                                 {districts.map(x => (
                                     <MenuItem key={x.id} value={x.id}>

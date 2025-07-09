@@ -1,7 +1,9 @@
 import { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
 import { UserAddressSaveType } from '../types/user-address-save.type';
 import { userAddressCreate } from '../services/user-address-create.service';
+import { UserAddressSaveResponseType } from '../types/user-address-save-response.type';
+import { useDispatch } from 'react-redux';
+import { setUserAddressId } from '@/store/slices/checkout.slice';
 
 export function useUserAddressCreate() {
     const [error, setError] = useState<string | null>(null);
@@ -12,7 +14,8 @@ export function useUserAddressCreate() {
         setError(null);
         setLoading(true);
         try {
-            await userAddressCreate(request);
+            const userAddressSaveResponse: UserAddressSaveResponseType = await userAddressCreate(request);
+            dispatch(setUserAddressId(userAddressSaveResponse.id));
 
             return true;
         } catch (e: any) {
@@ -21,7 +24,7 @@ export function useUserAddressCreate() {
         } finally {
             setLoading(false);
         }
-    }, [dispatch]);
+    }, []);
 
     return { execute, loading, error };
 }
