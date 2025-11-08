@@ -4,18 +4,18 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import styles from "./added-to-cart-indicator.module.css";
 
-type AddedToCartIndicatorProps = {
-    productId: number;
+type IndicadorAgregadoAlCarritoProps = {
+    productoId: string;
 };
 
-const AddedToCartIndicator = ({ productId }: AddedToCartIndicatorProps) => {
-    const isInCart = useSelector((state: RootState) =>
-        state.cart.items.some((item) => item.id === productId)
+const IndicadorAgregadoAlCarrito = ({ productoId }: IndicadorAgregadoAlCarritoProps) => {
+    const estaEnCarrito = useSelector((state: RootState) =>
+        state.carrito.productos.some((item) => item.id === productoId)
     );
 
-    if (!isInCart) return null;
+    if (!estaEnCarrito) return null;
 
     return <span className={styles.indicator}>Agregado</span>;
 };
 
-export default AddedToCartIndicator;
+export default IndicadorAgregadoAlCarrito;

@@ -1,17 +1,17 @@
-import { AuthUserResponseType } from "@/app/(no-ui)/auth/register/types/auth-user-response.type";
+import { UsuarioAutenticacionType } from "@/app/(auth)/register/types/usuario-autenticacion.type";
 import config from "@/config/config";
 import { ApiResponseOK } from "@/shared/types/api-response-ok";
 
-export async function refreshToken(): Promise<AuthUserResponseType | null> {
+export async function refreshToken(): Promise<UsuarioAutenticacionType | null> {
     const res = await fetch(`${config.apiBaseUrl}/auth/refresh`, {
         method: 'POST',
         credentials: 'include'
     });
 
     if (res.ok) {
-        const apiResponse: ApiResponseOK<AuthUserResponseType> = await res.json();
+        const apiResponse: ApiResponseOK<UsuarioAutenticacionType> = await res.json();
 
-        return apiResponse.data as AuthUserResponseType; 
+        return apiResponse.data as UsuarioAutenticacionType; 
     }
 
     return null;

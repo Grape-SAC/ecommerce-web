@@ -4,8 +4,10 @@ import React, { useState } from 'react';
 import styles from './header.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 import NProgress from 'nprogress';
+import Link from 'next/link';
+import CartCounter from '@/components/ui/cart-counter/cart-counter';
 
 type HeaderProps = {
     className?: string;
@@ -28,8 +30,8 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
                 <Image
                     src="/Logo.webp"
                     alt="Logo de Ecommerce"
-                    width={40}
-                    height={40}
+                    width={35}
+                    height={35}
                 />
             </div>
             <div className={styles.search}>
@@ -41,6 +43,20 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     onKeyDown={handleKeyDown}
                 />
+            </div>
+            <div className={styles.cart}>
+                <Link
+                    href="/cart"
+                    aria-label="Ver carrito de compras"
+                    onClick={() => {
+                        NProgress.start();
+                    }}
+                >
+                    <div className={styles.cartIconContainer}>
+                        <ShoppingCartIcon className={styles.icon} />
+                        <CartCounter />
+                    </div>
+                </Link>
             </div>
         </header>
     );

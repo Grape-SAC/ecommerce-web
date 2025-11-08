@@ -3,11 +3,11 @@
 import React from 'react';
 import { Providers } from '@/store/providers';
 import useNProgress from './use-nprogress';
-import { useAuth } from '@/config/hooks/use-auth';
+import { useAutenticacion } from '@/config/hooks/use-autenticacion';
 
 function InnerLayout({ children }: { children: React.ReactNode }) {
   useNProgress();
-  useAuth(); // ✅ Ya dentro del Redux Provider
+  useAutenticacion(); // ✅ Ya dentro del Redux Provider
 
   return <>{children}</>;
 }

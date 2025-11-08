@@ -1,16 +1,16 @@
 import { HttpStatus } from "@/shared/enum/http-status";
 import config from "@/config/config";
 import { ApiResponseOK } from "@/shared/types/api-response-ok";
-import { DocumentTypeListType } from "@/shared/document-types/types/document-type-list.type";
+import { TipoDocumentoListaType } from "@/shared/document-types/types/tipo-documento-lista.type";
 
-export async function findAllDocumentTypes(): Promise<DocumentTypeListType[]> {
-    const response: Response = await fetch(`${config.apiBaseUrl}/document-types`);
+export async function listarTiposDocumento(): Promise<TipoDocumentoListaType[]> {
+    const response: Response = await fetch(`${config.apiBaseUrl}/tipos-documento`);
 
     switch (response.status) {
         case HttpStatus.OK: {
-            const apiResponse: ApiResponseOK<DocumentTypeListType[]> = await response.json();
+            const apiResponse: ApiResponseOK<TipoDocumentoListaType[]> = await response.json();
 
-            return apiResponse.data as DocumentTypeListType[];
+            return apiResponse.data as TipoDocumentoListaType[];
         }
         default:
             throw new Error('Algo salió mal. Estamos trabajando para solucionar el problema. Por favor, inténtalo de nuevo más tarde.');

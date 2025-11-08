@@ -1,17 +1,17 @@
 export const runtime = 'nodejs';
 
+import { UsuarioAutenticacionType } from '@/shared/types/usuario-autenticacion-response.type';
 import { cookies } from 'next/headers';
-import { AuthUserResponseType } from '@/app/(no-ui)/auth/register/types/auth-user-response.type';
 
 export async function GET() {
-  const cookieStore = cookies() as any; // ya no da error
+  const cookieStore = cookies() as any;
   const accessToken = cookieStore.get('access_token')?.value;
 
   if (!accessToken) {
     return Response.json(null, { status: 401 });
   }
 
-  const backendResponse = await fetch(`${process.env.BACKEND_URL}/auth/me`, {
+  const backendResponse = await fetch(`${process.env.BACKEND_URL}/auth/mi-perfil`, {
     headers: {
       Cookie: `access_token=${accessToken}`,
     },
@@ -22,7 +22,7 @@ export async function GET() {
     return Response.json(null, { status: 401 });
   }
 
-  const user: AuthUserResponseType = await backendResponse.json();
+  const usuarioResponse: UsuarioAutenticacionType = await backendResponse.json();
 
-  return Response.json(user);
+  return Response.json(usuarioResponse);
 }

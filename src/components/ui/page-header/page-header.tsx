@@ -9,21 +9,24 @@ type PageHeaderProps = {
   title: string;
   backHref?: string;
   backLabel?: string;
+  showBackLink?: boolean;
 };
 
-const PageHeader = ({ title, backHref = '/', backLabel = '' }: PageHeaderProps) => {
+const PageHeader = ({ title, backHref = '/', backLabel = '', showBackLink = true, }: PageHeaderProps) => {
   return (
     <div className={styles.header}>
-      <Link
-        href={backHref}
-        className={styles.backLink}
-        onClick={() => {
-          NProgress.start();
-        }}
-      >
-        <ArrowLeftIcon className={styles.icon} />
-        <span>{backLabel}</span>
-      </Link>
+      {showBackLink && (
+        <Link
+          href={backHref}
+          className={styles.backLink}
+          onClick={() => {
+            NProgress.start();
+          }}
+        >
+          <ArrowLeftIcon className={styles.icon} />
+          <span>{backLabel}</span>
+        </Link>
+      )}
       <h1 className={styles.title}>{title}</h1>
     </div>
   );

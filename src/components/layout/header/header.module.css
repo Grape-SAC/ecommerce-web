@@ -1,12 +1,13 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   padding: 1rem;
 }
 
 .search {
-  width: 85%;
+  width: 77%;
   position: relative;
 }
 
@@ -35,4 +36,13 @@
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.cartIconContainer {
+    position: relative;
 }

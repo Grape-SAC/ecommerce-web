@@ -2,7 +2,7 @@
 
 import styles from './bottom-nav-bar.module.css';
 import Link from 'next/link';
-import { HomeIcon, Squares2X2Icon, ShoppingCartIcon, CubeIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import { HomeIcon, Squares2X2Icon, ShoppingCartIcon, CubeIcon, UserCircleIcon, HeartIcon } from '@heroicons/react/24/outline';
 import CartCounter from '@/components/ui/cart-counter/cart-counter';
 import NProgress from 'nprogress';
 
@@ -16,7 +16,7 @@ const BottomNavBar: React.FC<HeaderProps> = ({ className }) => {
         <nav className={styles.nav}>
             <ul className={styles.navList}>
                 <li className={styles.navItem}>
-                    <Link href="/home" aria-label="Ir a inicio">
+                    <Link href="/" aria-label="Ir a inicio">
                         <HomeIcon className={styles.icon} />
                         <span>Inicio</span>
                     </Link>
@@ -28,18 +28,9 @@ const BottomNavBar: React.FC<HeaderProps> = ({ className }) => {
                     </Link>
                 </li>
                 <li className={styles.navItem}>
-                    <Link
-                        href="/cart"
-                        aria-label="Ver carrito de compras"
-                        onClick={() => {
-                            NProgress.start();
-                        }}
-                    >
-                        <div className={styles.cartIconContainer}>
-                            <ShoppingCartIcon className={styles.icon} />
-                            <CartCounter />
-                        </div>
-                        <span>Carrito</span>
+                    <Link href="/favorites" aria-label="Ver favoritos">
+                        <HeartIcon className={styles.icon} />
+                        <span>Favoritos</span>
                     </Link>
                 </li>
                 <li className={styles.navItem}>
@@ -49,9 +40,9 @@ const BottomNavBar: React.FC<HeaderProps> = ({ className }) => {
                     </Link>
                 </li>
                 <li className={styles.navItem}>
-                    <Link href="/perfil" aria-label="Ver perfil">
+                    <Link href="/account" aria-label="Ver mi cuenta">
                         <UserCircleIcon className={styles.icon} />
-                        <span>Perfil</span>
+                        <span>Mi Cuenta</span>
                     </Link>
                 </li>
             </ul>

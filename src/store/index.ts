@@ -1,34 +1,34 @@
 import { configureStore } from '@reduxjs/toolkit';
-import cartReducer from './slices/cart.slice';
-import authReducer from './slices/auth.slice';
-import checkoutReducer from './slices/checkout.slice';
+import carritoReducer from './slices/carrito.slice';
+import authReducer from './slices/autenticacion.slice';
+import checkoutReducer from './slices/finaliza-compra.slice';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from "redux-persist/lib/storage";
 
-const persistConfig = {
-    key: "cart",
+const configuracionPersistenciaCarrito = {
+    key: "carrito",
     storage,
 };
 
-const authPersistConfig = {
+const configuracionPersistenciaAuth = {
     key: 'auth',
     storage,
 };
 
-const checkoutPersistConfig = {
-    key: 'checkout',
+const configuracionPersistenciaFinalizaCompra = {
+    key: 'finaliza-compra',
     storage,
 };
 
-const persistedCartReducer = persistReducer(persistConfig, cartReducer);
-const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
-const persistedCheckoutReducer = persistReducer(checkoutPersistConfig, checkoutReducer);
+const carritoPersistido = persistReducer(configuracionPersistenciaCarrito, carritoReducer);
+const authPersistido = persistReducer(configuracionPersistenciaAuth, authReducer);
+const finalizaCompraPersistido = persistReducer(configuracionPersistenciaFinalizaCompra, checkoutReducer);
 
 export const store = configureStore({
     reducer: {
-        cart: persistedCartReducer, // Se pueden agregar más reducers aquí en el futuro
-        auth: persistedAuthReducer,
-        checkout: persistedCheckoutReducer
+        carrito: carritoPersistido, // Se pueden agregar más reducers aquí en el futuro
+        auth: authPersistido,
+        checkout: finalizaCompraPersistido
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

@@ -4,18 +4,18 @@ import React from 'react';
 import styles from './quantity-selector.module.css';
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { useDispatch } from 'react-redux';
-import { updateQuantity } from '@/store/slices/cart.slice';
+import { actualizarCantidad } from '@/store/slices/carrito.slice';
 
-const QuantitySelector: React.FC<{ id: number; quantity: number }> = ({ id, quantity }) => {
+const QuantitySelector: React.FC<{ id: string; quantity: number }> = ({ id, quantity }) => {
   const dispatch = useDispatch();
 
   const handleIncrease = () => {
-    dispatch(updateQuantity({ id, quantity: quantity + 1 }));
+    dispatch(actualizarCantidad({ id, cantidad: quantity + 1 }));
   };
 
   const handleDecrease = () => {
     if (quantity > 1) {
-      dispatch(updateQuantity({ id, quantity: Math.max(1, quantity - 1) }));
+      dispatch(actualizarCantidad({ id, cantidad: Math.max(1, quantity - 1) }));
     }
   };
 
