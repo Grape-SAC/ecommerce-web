@@ -1,9 +1,10 @@
 
-import { CarritoProductoType } from '@/app/cart/types/cart-item.type';
+
+import { ArticuloCarritoType } from '@/app/carrito/types/articulo-carrito.type';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CarritoState {
-  productos: CarritoProductoType[];
+  productos: ArticuloCarritoType[];
 }
 
 const estadoInicial: CarritoState = { productos: [] };
@@ -12,7 +13,7 @@ const carritoSlice = createSlice({
   name: 'carrito',
   initialState: estadoInicial,
   reducers: {
-    agregarProducto: (state, action: PayloadAction<CarritoProductoType>) => {
+    agregarProducto: (state, action: PayloadAction<ArticuloCarritoType>) => {
       const productoExistente = state.productos.find(producto => producto.id === action.payload.id);
 
       if (productoExistente) {

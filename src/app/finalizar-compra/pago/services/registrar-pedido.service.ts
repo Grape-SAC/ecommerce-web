@@ -6,16 +6,17 @@ import { RegistrarPedidoType } from "../types/registrar-pedido.type";
 export async function registrarPedido(request: RegistrarPedidoType, archivoComprobante?: File): Promise<ApiResponseOK<void>> {
     const formData = new FormData();
 
-    formData.append("items", JSON.stringify(request.productos));
-    formData.append("userAddressId", request.usuarioDireccionId);
-    formData.append("paymentMethodCode", request.codigoMetodoPago);
-    formData.append("orderDeliveryTypeCode", request.codigoTipoEntrega);
+    formData.append("productos", JSON.stringify(request.productos));
+    formData.append("usuarioDireccionId", request.usuarioDireccionId);
+    formData.append("codigoMetodoPago", request.codigoMetodoPago);
+    formData.append("codigoTipoEntrega", request.codigoTipoEntrega);
+    formData.append("costoEnvio", String(request.costoEnvio));
 
     if (archivoComprobante) {
         formData.append("archivoComprobante", archivoComprobante);
     }
 
-    const response: Response = await fetch(`${config.apiBaseUrl}/pedidos`, {
+    const response: Response = await fetch(`${config.apiBaseUrlPublic}/pedidos`, {
         method: 'POST',
         body: formData,
         credentials: 'include'

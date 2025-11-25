@@ -1,0 +1,392 @@
+.container {
+  padding: 0 1rem 5rem;
+  padding: 20px 15px 15px 15px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 20px;
+}
+
+/* Tarjetas generales */
+.card {
+  background-color: #ffffff;
+  /* border-radius: 16px; */
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #ddd;
+  /* box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06); */
+}
+
+/* Resumen pedido */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-bottom: 0.6rem;
+}
+
+.orderCode {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.orderDate {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 0.1rem;
+}
+
+.orderTotal {
+  text-align: right;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.orderTotal strong {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+/* Estado */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.statusIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Puedes ajustar estos colores para que coincidan con tus otros styles */
+.statusYellow {
+  background-color: #fef9c3;
+  color: #92400e;
+}
+
+.statusBlue {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.statusIndigo {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+
+.statusGreen {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.statusRed {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.statusGray {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.smallNote {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+/* Secciones generales */
+.sectionHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.sectionIcon {
+  width: 20px;
+  height: 20px;
+  color: #4b5563;
+  margin-top: 2px;
+}
+
+.sectionTitle {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.sectionSubtitle {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* Entrega */
+.deliveryInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.deliveryRow {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.deliveryIcon {
+  width: 18px;
+  height: 18px;
+  color: #6b7280;
+  margin-top: 0.15rem;
+}
+
+.deliveryIconPlaceholder {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.15rem;
+}
+
+.deliveryLabel {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+.deliveryValue {
+  font-size: 0.9rem;
+  color: #111827;
+}
+
+.deliveryValueSecondary {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.deliveryEta {
+  /* margin-top: 0.4rem; */
+  font-size: 0.78rem;
+  color: #16a34a;
+}
+
+/* Pago */
+.paymentInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.paymentRow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.paymentIcon {
+  width: 18px;
+  height: 18px;
+  color: #6b7280;
+}
+
+.paymentAmountRow {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.86rem;
+}
+
+.paymentAmountRow strong {
+  font-size: 0.95rem;
+}
+
+/* Botón comprobante */
+.comprobanteButton {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+  padding: 0.45rem 0.6rem;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  font-size: 0.8rem;
+  color: #111827;
+}
+
+.comprobanteButton:hover {
+  background-color: #f3f4f6;
+}
+
+.comprobanteIcon {
+  width: 18px;
+  height: 18px;
+  color: #4b5563;
+}
+
+.comprobanteChevron {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: #9ca3af;
+}
+
+/* Productos */
+.productList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 15px;
+}
+
+.productItem {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.productImageWrapper {
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: 10px;
+  background-color: #f3f4f6;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.productInfo {
+  flex: 1;
+}
+
+.productName {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+.productMeta {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 0.15rem;
+}
+
+.productSubtotal {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #111827;
+  margin-top: 0.15rem;
+}
+
+/* Resumen montos */
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.86rem;
+  color: #4b5563;
+  margin-bottom: 0.15rem;
+}
+
+.summaryDivider {
+  border-top: 1px dashed #e5e7eb;
+  margin: 0.4rem 0;
+}
+
+.summaryRowTotal {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.igvNote {
+  margin-top: 0.3rem;
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+/* Ayuda */
+.helpBox {
+  margin-top: 0.5rem;
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  background-color: #f9fafb;
+}
+
+.helpTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.2rem;
+}
+
+.helpText {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.helpButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #16a34a;
+}
+
+.helpButton:hover {
+  text-decoration: underline;
+}
+
+.helpIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Overlay comprobante */
+.comprobanteOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: rgba(15, 23, 42, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comprobanteDialog {
+  max-width: 420px;
+  width: 90%;
+  max-height: 80vh;
+  border-radius: 14px;
+  background-color: #ffffff;
+  padding: 0.75rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.comprobanteImage {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}

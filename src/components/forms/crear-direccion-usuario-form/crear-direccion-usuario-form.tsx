@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './usuario-direccion-crear-form.module.css';
+import styles from './crear-direccion-usuario-form.module.css';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { TextField, MenuItem, Select, FormControl, InputLabel, Button, Alert, AlertTitle, FormHelperText } from '@mui/material'
@@ -11,14 +11,15 @@ import { useListaDistritos } from '@/shared/ubigeo/hooks/use-lista-distritos';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import InfoModal from '@/components/ui/info-modal/info-modal';
-import { useUserAddressCreate } from '@/app/mi-cuenta/address/hooks/use-user-address-create';
-import { UsuarioDireccionFormType } from '@/app/mi-cuenta/address/types/usuario-direccion-form.type';
-import { usuarioDireccionFormValidation } from '@/app/mi-cuenta/address/validation/usuario-direccion-form.validation';
-import { UsuarioDireccionGuardarType } from '@/app/mi-cuenta/address/types/usuario-direccion-guardar.type';
 import { useDispatch } from 'react-redux';
 import { setPrecioEnvio } from '@/store/slices/finaliza-compra.slice';
+import { useCrearDireccionUsuario } from '@/app/mi-cuenta/direcciones/hooks/use-crear-direccion-usuario';
+import { DireccionUsuarioFormType } from '@/app/mi-cuenta/direcciones/types/direccion-usuario-form.type';
+import { usuarioDireccionFormValidation } from '@/app/mi-cuenta/direcciones/validation/usuario-direccion-form.validation';
+import { GuardarDireccionUsuarioType } from '@/app/mi-cuenta/direcciones/types/guardar-direccion-usuario.type';
+import { LoadingPage } from '@/components/ui/loading-page/loading-page';
 
-const UsuarioDireccionCrearForm = () => {
+const CrearDireccionUsuarioForm = () => {
     const router = useRouter();
     const [departamentoId, setDepartamentoId] = useState('');
     const [provinciaId, setProvinciaId] = useState('');
@@ -26,7 +27,7 @@ const UsuarioDireccionCrearForm = () => {
     const { departamentos } = useListaDepartamentos();
     const { provincias } = useListaProvincias(departamentoId);
     const { distritos } = useListaDistritos(provinciaId);
-    const { execute: doUserAddressCreate, loading, error } = useUserAddressCreate();
+    const { execute: doUserAddressCreate, loading, error } = useCrearDireccionUsuario();
     const dispatch = useDispatch();
 
     const {
@@ -34,7 +35,7 @@ const UsuarioDireccionCrearForm = () => {
         handleSubmit,
         setValue,
         formState: { errors },
-    } = useForm<UsuarioDireccionFormType>({
+    } = useForm<DireccionUsuarioFormType>({
         resolver: yupResolver(usuarioDireccionFormValidation),
         mode: 'onTouched',
     });
@@ -47,10 +48,8 @@ const UsuarioDireccionCrearForm = () => {
 
     const handleCloseDialog = () => setDialogOpen(false);
 
-    const onSubmit = async (data: UsuarioDireccionFormType) => {
-        NProgress.start();
-
-        const request: UsuarioDireccionGuardarType = {
+    const onSubmit = async (data: DireccionUsuarioFormType) => {
+        const request: GuardarDireccionUsuarioType = {
             ubigeoId: data.distritoId,
             direccion: data.direccion,
             referencia: data.referencia,
@@ -59,15 +58,15 @@ const UsuarioDireccionCrearForm = () => {
         const ok: boolean = await doUserAddressCreate(request);
 
         if (ok) {
-            router.push('/checkout/payment');
+            router.push('/finalizar-compra/pago');
         }
-
-        NProgress.done();
     };
 
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
+                {loading && <LoadingPage sx={{ position: 'fixed', zIndex: 9999 }} />}
+
                 <Controller
                     name="departamentoId"
                     control={control}
@@ -222,7 +221,7 @@ const UsuarioDireccionCrearForm = () => {
                         type="submit"
                         disabled={loading}
                     >
-                        SIGUIENTE
+                        CONTINUAR
                     </Button>
                 </div>
             </form>
@@ -237,4 +236,4 @@ const UsuarioDireccionCrearForm = () => {
     );
 }
 
-export default UsuarioDireccionCrearForm;
+export default CrearDireccionUsuarioForm;

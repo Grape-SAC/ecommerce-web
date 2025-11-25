@@ -5,7 +5,7 @@ import { CrearCuentaRequestType } from "../types/crear-cuenta-request.type";
 import { ApiResponseError } from "@/shared/types/api-response-error";
 
 export async function crearCuenta(request: CrearCuentaRequestType): Promise<String> {
-    const response: Response = await fetch(`${config.apiBaseUrl}/auth/registrarse`, {
+    const response: Response = await fetch(`${config.apiBaseUrlPublic}/auth/registrarse`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(request),

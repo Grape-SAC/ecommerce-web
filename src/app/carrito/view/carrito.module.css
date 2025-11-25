@@ -1,11 +1,43 @@
 .cartContainer {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    height: 100vh;
+    /* 1. CLAVAR A LA PANTALLA */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    /* 2. Altura exacta del viewport móvil */
+    height: 100dvh; 
+    width: 100vw;
+    
+    /* 3. USAR FLEXBOX (Columna) */
+    display: flex;
+    flex-direction: column;
+    
+    /* Estilos visuales */
+    background-color: #ffffff;
     padding: 20px 15px 15px 15px;
+    z-index: 50; /* Encima de todo */
 }
 
+/* EL HEADER (Si tiene clase contenedora, si no, Flex lo maneja solo) */
+/* No necesitas CSS especial aquí, Flex lo pondrá arriba */
+
+
+/* LA LISTA DE ITEMS (El centro) */
 .cartItems {
-    overflow-y: auto;
+    /* 4. LA MAGIA: "Flex 1" le dice: "Ocupa todo el espacio sobrante" */
+    flex: 1;
+    
+    /* Permite scroll SOLO en esta zona si hay muchos productos */
+    overflow-y: auto; 
+    
+    /* Padding interno para que se vea bonito */
     padding-top: 20px;
+    
+    /* Evita errores de cálculo en flexbox */
+    min-height: 0; 
 }
+
+/* EL FOOTER (ResumenCarrito) */
+/* Flexbox lo empujará al fondo automáticamente porque cartItems tiene flex: 1 */

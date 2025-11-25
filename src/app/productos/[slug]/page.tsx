@@ -3,14 +3,18 @@ import { DetalleProductoType } from "./types/detalle-producto.type";
 import { obtenerDetalleProducto } from "./services/producto-detalle-service";
 import DetalleProductoView from "./view/detalle-producto.view";
 
-const DetalleProductoPage = async ({ params }: { params: { slug: string } }) => {  
-    const producto: DetalleProductoType | null = await obtenerDetalleProducto(params.slug);
+export default async function DetalleProductoPage({ params, }: { params: Promise<{ slug: string }>; }) {
+    const { slug } = await params;
 
-    if (!producto) { 
+    const producto: DetalleProductoType | null = await obtenerDetalleProducto(slug);
+
+    if (!producto) {
         notFound();
     }
 
-    return <DetalleProductoView producto={producto as DetalleProductoType} />;
+    return (
+        <div style={{ padding: '16px' }}>
+            <DetalleProductoView producto={producto} />
+        </div>
+    );
 }
-
-export default DetalleProductoPage;

@@ -5,7 +5,7 @@ import { GuardarDireccionUsuarioType } from "../types/guardar-direccion-usuario.
 import { GuardarDireccionUsuarioResponseType } from "../types/guardar-direccion-usuario-response.type";
 
 export async function crearDireccionUsuario(request: GuardarDireccionUsuarioType): Promise<GuardarDireccionUsuarioResponseType> {
-    const response: Response = await fetch(`${config.apiBaseUrl}/usuario-direcciones`, {
+    const response: Response = await fetch(`${config.apiBaseUrlPublic}/usuario-direcciones`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(request),

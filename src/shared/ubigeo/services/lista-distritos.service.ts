@@ -4,7 +4,7 @@ import { ApiResponseOK } from "@/shared/types/api-response-ok";
 import { ListaDistritoType } from "../types/lista-distrito.type";
 
 export async function listarDistritosPorProvincia(provinciaId: string): Promise<ListaDistritoType[]> {
-    const response: Response = await fetch(`${config.apiBaseUrl}/ubigeos/distritos?provinciaId=${provinciaId}`);
+    const response: Response = await fetch(`${config.apiBaseUrlPublic}/ubigeos/distritos?provinciaId=${provinciaId}`);
 
     switch (response.status) {
         case HttpStatus.OK: {

@@ -6,7 +6,7 @@ import { UsuarioAutenticacionType } from "@/shared/types/usuario-autenticacion-r
 import { ActualizarPerfilType } from "../types/actualizar-datos-personales.type";
 
 export async function actualizarDatosPersonales(request: ActualizarPerfilType): Promise<UsuarioAutenticacionType> {
-    const response: Response = await fetch(`${config.apiBaseUrl}/auth/actualizar-perfil`, {
+    const response: Response = await fetch(`${config.apiBaseUrlPublic}/auth/actualizar-perfil`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(request),

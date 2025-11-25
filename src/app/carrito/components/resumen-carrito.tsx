@@ -1,14 +1,16 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./resumen-carrito.module.css";
 import { Button } from "@mui/material";
 import NProgress from 'nprogress';
 import { ArticuloCarritoType } from "../types/articulo-carrito.type";
+import { LoadingPage } from "@/components/ui/loading-page/loading-page";
 
 const ResumenCarrito = ({ articulos }: { articulos: ArticuloCarritoType[] }) => {
-    const router = useRouter();    
+    const router = useRouter();
+    const [isNavigating, setIsNavigating] = useState(false);
 
     // Calcular el total del carrito
     const total = useMemo(() => {
@@ -17,6 +19,8 @@ const ResumenCarrito = ({ articulos }: { articulos: ArticuloCarritoType[] }) => 
 
     return (
         <div className={styles.summaryContainer}>
+            {isNavigating && <LoadingPage sx={{ position: 'fixed', zIndex: 9999 }} />}
+
             <p className={styles.totalContainer}>
                 Total
                 <span>S/.{total.toFixed(2)}</span>
@@ -26,7 +30,7 @@ const ResumenCarrito = ({ articulos }: { articulos: ArticuloCarritoType[] }) => 
                 color="primary"
                 fullWidth
                 onClick={() => {
-                    NProgress.start();
+                    setIsNavigating(true)
 
                     router.push("/finalizar-compra/identificacion");
                 }}

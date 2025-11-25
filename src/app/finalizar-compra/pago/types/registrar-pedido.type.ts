@@ -5,4 +5,5 @@ export interface RegistrarPedidoType {
     codigoMetodoPago: string;  
     codigoTipoEntrega: string;  
     usuarioDireccionId: string;
+    costoEnvio: number;
 }

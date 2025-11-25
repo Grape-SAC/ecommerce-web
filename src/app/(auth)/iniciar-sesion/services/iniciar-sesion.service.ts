@@ -6,7 +6,7 @@ import { IniciarSesionRequestType } from "@/app/(auth)/iniciar-sesion/types/inic
 import { UsuarioAutenticacionType } from "@/shared/types/usuario-autenticacion-response.type";
 
 export async function iniciarSesion(request: IniciarSesionRequestType): Promise<UsuarioAutenticacionType> {
-    const responseHttp: Response = await fetch(`${config.apiBaseUrl}/auth/iniciar-sesion`, {
+    const responseHttp: Response = await fetch(`${config.apiBaseUrlPublic}/auth/iniciar-sesion`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(request),
@@ -22,16 +22,20 @@ export async function iniciarSesion(request: IniciarSesionRequestType): Promise<
         case HttpStatus.BAD_REQUEST: {
             const apiResponse: ApiResponseError = await responseHttp.json();
 
-            const validationErrors = apiResponse.errors?.join("; ");
-
-            throw new Error(validationErrors);
+            throw apiResponse;
         }
         case HttpStatus.UNAUTHORIZED: {
             const apiResponse: ApiResponseError = await responseHttp.json();
 
-            throw new Error(apiResponse.message);
+            throw apiResponse;
         }
         default:
-            throw new Error('Algo salió mal. Estamos trabajando para solucionar el problema. Por favor, inténtalo de nuevo más tarde.');
+            const apiResponse: ApiResponseError = {
+                message: 'Algo salió mal. Estamos trabajando para solucionar el problema. Por favor, inténtalo de nuevo más tarde.',
+                status: 'error',
+                code: 500
+            };
+
+            throw apiResponse;
     }
 }

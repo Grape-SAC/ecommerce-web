@@ -22,8 +22,8 @@ const ArticuloCarrito = ({ item }: { item: ArticuloCarritoType }) => {
     return (
         <li className={styles.cartItem}>
             <div className={styles.cartItemImage}>
-                <Image
-                    src={`http://localhost:8080/imagenes/${item.imagen}`}
+                <img
+                    src={item.imagen}
                     alt={item.nombre}
                     width={80}
                     height={80}

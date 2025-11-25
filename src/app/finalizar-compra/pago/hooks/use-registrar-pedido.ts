@@ -16,9 +16,8 @@ export function useRegistrarPedido() {
             return true;
         } catch (e: any) {
             setError(e.message || 'Error desconocido');
-            return false;
-        } finally {
             setLoading(false);
+            return false;
         }
     }, [dispatch]);
 

@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 export async function listarDireccionesUsuario(): Promise<ListaDireccionesUsuarioType[]> {
     const cookieHeader = cookies().toString();
 
-    const response: Response = await fetch(`${config.apiBaseUrl}/usuario-direcciones`, {
+    const response: Response = await fetch(`${config.apiBaseUrlServer}/usuario-direcciones`, {
         method: 'GET',
         headers: {
             Cookie: cookieHeader,

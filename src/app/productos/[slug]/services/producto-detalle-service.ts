@@ -4,7 +4,7 @@ import { ApiResponseOK } from "@/shared/types/api-response-ok";
 import { DetalleProductoType } from "../types/detalle-producto.type";
 
 export async function obtenerDetalleProducto(slug: string): Promise<DetalleProductoType | null> {
-    const response = await fetch(`${config.apiBaseUrl}/productos/slug/${slug}`);
+    const response = await fetch(`${config.apiBaseUrlServer}/productos/slug/${slug}`);
 
     switch (response.status) {
         case HttpStatus.OK: {

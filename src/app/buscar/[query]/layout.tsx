@@ -1,14 +1,12 @@
-
-import BottomNavBar from "@/components/layout/bottom-nav-bar/bottom-nav-bar";
 import "@/app/globals.css";
-import { ReactNode } from "react";
+import BottomNavBar from "@/components/layout/bottom-nav-bar/bottom-nav-bar";
 import Header from "@/components/layout/header/header";
 
-interface LayoutProps {
-  children: ReactNode;
-}
-
-const MainLayout: React.FC<LayoutProps> = ({ children }) => {
+export default function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <div className="layout-grid">
       <Header />
@@ -16,6 +14,4 @@ const MainLayout: React.FC<LayoutProps> = ({ children }) => {
       <BottomNavBar />
     </div>
   );
-};
-
-export default MainLayout;
+}

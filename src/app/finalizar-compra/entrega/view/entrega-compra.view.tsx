@@ -6,8 +6,8 @@ import { useState } from 'react';
 import { FormControl, RadioGroup, FormControlLabel, Radio, Box } from '@mui/material'
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PageHeader from '@/components/ui/page-header/page-header';
-import UsuarioDireccionCrearForm from '@/components/forms/usuario-direccion-crear-form/usuario-direccion-crear-form';
-import UserAddressUpdateForm from '@/components/forms/usuario-direccion-actualizar-form/usuario-direccion-actualizar-form';
+import CrearDireccionUsuarioForm from '@/components/forms/crear-direccion-usuario-form/crear-direccion-usuario-form';
+import ActualizarDireccionUsuarioForm from '@/components/forms/actualizar-direccion-usuario-form/actualizar-direccion-usuario-form';
 import { ListaDireccionesUsuarioType } from '@/app/mi-cuenta/direcciones/types/lista-direcciones-usuario.type';
 
 const EntregaCompraView = ({ direccionesUsuario }: { direccionesUsuario: ListaDireccionesUsuarioType[] }) => {
@@ -33,9 +33,9 @@ const EntregaCompraView = ({ direccionesUsuario }: { direccionesUsuario: ListaDi
             </FormControl>
 
             {direccionesUsuario.length > 0 ? (
-                <UserAddressUpdateForm userAddress={direccionesUsuario[0]}/>
+                <ActualizarDireccionUsuarioForm direccionUsuario={direccionesUsuario[0]}/>
             ) : (
-                <UsuarioDireccionCrearForm />
+                <CrearDireccionUsuarioForm />
             )}
         </div>
     );

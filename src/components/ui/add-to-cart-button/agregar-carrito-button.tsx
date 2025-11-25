@@ -5,14 +5,14 @@ import { agregarProducto } from '@/store/slices/carrito.slice';
 import styles from './agregar-carrito-button.module.css';
 import { RootState } from '@/store';
 import { useRouter } from 'next/navigation'; // Para navegación
-import { DetalleProductoType } from '@/app/(producto)/(detalle)/productos/[slug]/types/detalle-producto.type';
+import { DetalleProductoType } from '@/app/productos/[slug]/types/detalle-producto.type';
 
 const AgregarCarritoButton = ({ producto }: {producto: DetalleProductoType}) => {
     const dispatch = useDispatch();
     const router = useRouter();
 
     const estaEnCarrito = useSelector((state: RootState) =>
-        state.cart.productos.some((item) => item.id === producto.id)
+        state.carrito.productos.some((item) => item.id === producto.id)
     );
 
     const manejarAgregarCarrito = () => {

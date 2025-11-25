@@ -16,6 +16,7 @@ import { useRegistrarPedido } from '../hooks/use-registrar-pedido';
 import { useDispatch } from 'react-redux';
 import { vaciarCarrito } from '@/store/slices/carrito.slice';
 import { ArticuloCarritoType } from '@/app/carrito/types/articulo-carrito.type';
+import { LoadingPage } from '@/components/ui/loading-page/loading-page';
 
 type Props = {
     articulosCarrito: ArticuloCarritoType[];
@@ -60,32 +61,31 @@ const PagoCompraView = ({ articulosCarrito, precioEnvio, usuarioDireccionId }: P
     const handleCloseDialog = () => setDialogOpen(false);
 
     const handleFinishOrder = async () => {
-        NProgress.start();
-
         const request: RegistrarPedidoType = {
             usuarioDireccionId: usuarioDireccionId!,
             codigoMetodoPago: metodoPago,
-            codigoTipoEntrega: 'DELIVERY',
+            codigoTipoEntrega: 'DOMICILIO',
+            costoEnvio: precioEnvio,
             productos: articulosCarrito.map(item => ({
                 productoId: item.id,
                 cantidad: item.cantidad,
                 precio: item.precio
             }))
         };
-
+       
         const success = await execute(request, archivoComprobante ?? undefined);
 
         if (success) {
             dispatch(vaciarCarrito());
-            router.push('/finaliza-compra/confirmacion');
+            router.push('/finalizar-compra/confirmacion');
         }
-
-        NProgress.done();
     };
 
     return (
         <div className={styles.container} style={{ paddingBottom: '90px' }}>
-            <PageHeader title="Proceso de Pago" backHref="/finaliza-compra/entrega" />
+            {loading && <LoadingPage sx={{ position: 'fixed', zIndex: 9999 }} />}
+
+            <PageHeader title="Proceso de Pago" backHref="/finalizar-compra/entrega" />
 
             <CheckoutStep currentStep={2} stepTitles={['Identificación', 'Envío', 'Método de pago']} />
 

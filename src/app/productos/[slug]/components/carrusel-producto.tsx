@@ -5,6 +5,7 @@ import 'swiper/css';
 import { useState, useRef } from 'react';
 import styles from './carrusel-producto.module.css';
 import { ProductoImagenType } from "../types/producto-imagen.type";
+import Image from "next/image";
 
 const CarruselProductoView = ({ imagenes }: { imagenes: ProductoImagenType[] }) => {
     const [indiceImagenActual, setIndiceImagenActual] = useState(0);
@@ -33,10 +34,19 @@ const CarruselProductoView = ({ imagenes }: { imagenes: ProductoImagenType[] }) 
                 {imagenes.map((imagen, indice) => (
                     <SwiperSlide key={indice}>
                         <img
-                            src={`http://localhost:8080/imagenes/${imagen.nombre}`}
+                            src={imagen.nombre}
                             alt={`Imagen ${indice + 1}`}
                             loading="lazy"
                         />
+                        {/* <Image
+                            src={imagen.nombre}
+                            alt={`Imagen ${indice + 1}`}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: '100%', height: 'auto' }}
+                            loading="lazy"
+                        /> */}
                     </SwiperSlide>
                 ))}
             </Swiper>
@@ -52,11 +62,21 @@ const CarruselProductoView = ({ imagenes }: { imagenes: ProductoImagenType[] }) 
                 {imagenes.map((imagen, indice) => (
                     <SwiperSlide key={indice}>
                         <img
-                            src={`http://localhost:8080/imagenes/${imagen.nombre}`}
+                            src={imagen.nombre}
                             alt={`Miniatura ${indice + 1}`}
                             className="w-full h-auto object-cover cursor-pointer"
                             onClick={() => manejarClickMiniatura(indice)} // Actualizar imagen principal
                         />
+                        {/* <Image
+                            src={`http://localhost:8080/images/${imagen.nombre}`}
+                            alt={`Miniatura ${indice + 1}`}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            className="w-full h-auto object-cover cursor-pointer"
+                            style={{ width: '100%', height: 'auto' }}
+                            onClick={() => manejarClickMiniatura(indice)}
+                        /> */}
                     </SwiperSlide>
                 ))}
             </Swiper>
@@ -67,7 +87,7 @@ const CarruselProductoView = ({ imagenes }: { imagenes: ProductoImagenType[] }) 
                     {imagenes.map((imagen, indice) => (
                         <li key={indice}>
                             <img
-                                src={`http://localhost:8080/imagenes/${imagen.nombre}`}
+                                src={imagen.nombre}
                                 alt={`Imagen ${indice + 1}`}
                             />
                         </li>

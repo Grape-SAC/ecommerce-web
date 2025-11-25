@@ -1,0 +1,20 @@
+# Carpetas pesadas que NO deben ir al build context
+node_modules
+.next
+.git
+
+# Archivos de config / herramientas locales
+Dockerfile
+docker-compose.yml
+npm-debug.log
+yarn.lock
+pnpm-lock.yaml
+
+# Binarios locales innecesarios
+ngrok.exe
+*.log
+
+# IDE / SO
+.vscode
+.DS_Store
+Thumbs.db

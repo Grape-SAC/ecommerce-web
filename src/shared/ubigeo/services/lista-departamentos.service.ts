@@ -4,7 +4,7 @@ import { ApiResponseOK } from "@/shared/types/api-response-ok";
 import { ListaDepartamentoType } from "../types/lista-departamento.type";
 
 export async function listarDepartamentos(): Promise<ListaDepartamentoType[]> {
-    const response: Response = await fetch(`${config.apiBaseUrl}/ubigeos/departamentos`);
+    const response: Response = await fetch(`${config.apiBaseUrlPublic}/ubigeos/departamentos`);
 
     switch (response.status) {
         case HttpStatus.OK: {

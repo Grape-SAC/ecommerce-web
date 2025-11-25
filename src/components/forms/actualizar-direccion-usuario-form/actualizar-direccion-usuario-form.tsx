@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './usuario-direccion-actualizar-form.module.css';
+import styles from './actualizar-direccion-usuario-form.module.css';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import {
@@ -14,23 +14,24 @@ import { useListaDistritos } from '@/shared/ubigeo/hooks/use-lista-distritos';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import InfoModal from '@/components/ui/info-modal/info-modal';
-import { usuarioDireccionFormValidation } from '@/app/mi-cuenta/address/validation/usuario-direccion-form.validation';
-import { UsuarioDireccionFormType } from '@/app/mi-cuenta/address/types/usuario-direccion-form.type';
-import { UserAddressListType } from '@/app/mi-cuenta/address/types/user-address-list.type';
-import { useUserAddressUpdate } from '@/app/mi-cuenta/address/hooks/use-user-address-update';
 import { useDispatch } from 'react-redux';
 import { setPrecioEnvio } from '@/store/slices/finaliza-compra.slice';
+import { ListaDireccionesUsuarioType } from '@/app/mi-cuenta/direcciones/types/lista-direcciones-usuario.type';
+import { useActualizarDireccionUsuario } from '@/app/mi-cuenta/direcciones/hooks/use-actualizar-direccion-usuario';
+import { DireccionUsuarioFormType } from '@/app/mi-cuenta/direcciones/types/direccion-usuario-form.type';
+import { usuarioDireccionFormValidation } from '@/app/mi-cuenta/direcciones/validation/usuario-direccion-form.validation';
+import { LoadingPage } from '@/components/ui/loading-page/loading-page';
 
-const UserAddressUpdateForm = ({ userAddress }: { userAddress: UserAddressListType }) => {
+const ActualizarDireccionUsuarioForm = ({ direccionUsuario }: { direccionUsuario: ListaDireccionesUsuarioType }) => {
     const router = useRouter();
-    const [departmentId, setDepartmentId] = useState(userAddress.departmentId.toString());
-    const [provinceId, setProvinceId] = useState(userAddress.provinceId.toString());
+    const [departmentId, setDepartmentId] = useState(direccionUsuario.departamentoId.toString());
+    const [provinceId, setProvinceId] = useState(direccionUsuario.provinciaId.toString());
     const [dialogOpen, setDialogOpen] = useState(false);
 
-    const { departments } = useListaDepartamentos();
-    const { provinces } = useListaProvincias(departmentId);
-    const { districts } = useListaDistritos(provinceId);
-    const { execute: doUserAddressUpdate, loading, error } = useUserAddressUpdate();
+    const { departamentos } = useListaDepartamentos();
+    const { provincias } = useListaProvincias(departmentId);
+    const { distritos } = useListaDistritos(provinceId);
+    const { execute: doUserAddressUpdate, loading, error } = useActualizarDireccionUsuario();
     const dispatch = useDispatch();
 
     const {
@@ -39,22 +40,22 @@ const UserAddressUpdateForm = ({ userAddress }: { userAddress: UserAddressListTy
         setValue,
         reset,
         formState: { errors },
-    } = useForm<UsuarioDireccionFormType>({
+    } = useForm<DireccionUsuarioFormType>({
         resolver: yupResolver(usuarioDireccionFormValidation),
         mode: 'onTouched',
     });
 
     useEffect(() => {
-        if (userAddress) {
+        if (direccionUsuario) {
             reset({
-                departmentId: userAddress.departmentId.toString(),
-                provinciaId: userAddress.provinceId.toString(),
-                distritoId: userAddress.districtId,
-                direccion: userAddress.address,
-                referencia: userAddress.reference,
+                departamentoId: direccionUsuario.departamentoId.toString(),
+                provinciaId: direccionUsuario.provinciaId.toString(),
+                distritoId: direccionUsuario.distritoId,
+                direccion: direccionUsuario.direccion,
+                referencia: direccionUsuario.referencia,
             });
         }
-    }, [userAddress, reset]);
+    }, [direccionUsuario, reset]);
 
     useEffect(() => {
         if (error) {
@@ -64,34 +65,32 @@ const UserAddressUpdateForm = ({ userAddress }: { userAddress: UserAddressListTy
 
     const handleCloseDialog = () => setDialogOpen(false);
 
-    const onSubmit = async (data: UsuarioDireccionFormType) => {
-        NProgress.start();
-
-        const ok = await doUserAddressUpdate(userAddress.id, {
+    const onSubmit = async (data: DireccionUsuarioFormType) => {
+        const ok = await doUserAddressUpdate(direccionUsuario.id, {
             ubigeoId: data.distritoId,
             direccion: data.direccion,
             referencia: data.referencia,
         });
 
         if (ok) {
-            router.push('/checkout/payment');
+            router.push('/finalizar-compra/pago');
         }
-
-        NProgress.done();
     };
 
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
+                {loading && <LoadingPage sx={{ position: 'fixed', zIndex: 9999 }} />}
+
                 <Controller
-                    name="departmentId"
+                    name="departamentoId"
                     control={control}
                     defaultValue=""
                     render={({ field }) => (
                         <FormControl
                             fullWidth
                             variant="standard"
-                            error={!!errors.departmentId}
+                            error={!!errors.departamentoId}
                             sx={{ mt: 2 }}
                         >
                             <InputLabel id="select-department-label">Departamento</InputLabel>
@@ -103,23 +102,23 @@ const UserAddressUpdateForm = ({ userAddress }: { userAddress: UserAddressListTy
                                     const value = e.target.value;
                                     field.onChange(value);
                                     setDepartmentId(value);
-                                    setValue('provinceId', '');
-                                    setValue('districtId', '');
+                                    setValue('provinciaId', '');
+                                    setValue('distritoId', '');
                                 }}
                             >
-                                {departments.map(x => (
+                                {departamentos.map(x => (
                                     <MenuItem key={x.id} value={x.id}>
-                                        {x.name}
+                                        {x.nombre}
                                     </MenuItem>
                                 ))}
                             </Select>
-                            <FormHelperText>{errors.departmentId?.message}</FormHelperText>
+                            <FormHelperText>{errors.departamentoId?.message}</FormHelperText>
                         </FormControl>
                     )}
                 />
 
                 <Controller
-                    name="provinceId"
+                    name="provinciaId"
                     control={control}
                     defaultValue=""
                     render={({ field }) => (
@@ -138,12 +137,12 @@ const UserAddressUpdateForm = ({ userAddress }: { userAddress: UserAddressListTy
                                     const value = e.target.value;
                                     field.onChange(value);
                                     setProvinceId(value);
-                                    setValue('districtId', '');
+                                    setValue('distritoId', '');
                                 }}
                             >
-                                {provinces.map(x => (
+                                {provincias.map(x => (
                                     <MenuItem key={x.id} value={x.id}>
-                                        {x.name}
+                                        {x.nombre}
                                     </MenuItem>
                                 ))}
                             </Select>
@@ -153,7 +152,7 @@ const UserAddressUpdateForm = ({ userAddress }: { userAddress: UserAddressListTy
                 />
 
                 <Controller
-                    name="districtId"
+                    name="distritoId"
                     control={control}
                     defaultValue=""
                     render={({ field }) => (
@@ -171,15 +170,15 @@ const UserAddressUpdateForm = ({ userAddress }: { userAddress: UserAddressListTy
                                 onChange={(e) => {
                                     const value = e.target.value;
                                     field.onChange(value);
-                                    const selectedDistrict = districts.find(x => x.id === value);
-                                    const deliveryPrice = selectedDistrict?.deliveryPrice ?? 0;
+                                    const selectedDistrict = distritos.find(x => x.id === value);
+                                    const precioEnvio = selectedDistrict?.precioDelivery ?? 0;
 
-                                    dispatch(setPrecioEnvio(deliveryPrice));
+                                    dispatch(setPrecioEnvio(precioEnvio));
                                 }}
                             >
-                                {districts.map(x => (
+                                {distritos.map(x => (
                                     <MenuItem key={x.id} value={x.id}>
-                                        {x.name} - {x.deliveryPrice == null ? "S/. (Por Confirmar)" : "S/. " + x.deliveryPrice}
+                                        {x.nombre} - {x.precioDelivery == null ? "S/. (Por Confirmar)" : "S/. " + x.precioDelivery}
                                     </MenuItem>
                                 ))}
                             </Select>
@@ -189,7 +188,7 @@ const UserAddressUpdateForm = ({ userAddress }: { userAddress: UserAddressListTy
                 />
 
                 <Controller
-                    name="address"
+                    name="direccion"
                     control={control}
                     defaultValue=""
                     render={({ field }) => (
@@ -206,7 +205,7 @@ const UserAddressUpdateForm = ({ userAddress }: { userAddress: UserAddressListTy
                 />
 
                 <Controller
-                    name="reference"
+                    name="referencia"
                     control={control}
                     defaultValue=""
                     render={({ field }) => (
@@ -237,7 +236,7 @@ const UserAddressUpdateForm = ({ userAddress }: { userAddress: UserAddressListTy
                         type="submit"
                         disabled={loading}
                     >
-                        SIGUIENTE
+                        CONTINUAR
                     </Button>
                 </div>
             </form>
@@ -252,4 +251,4 @@ const UserAddressUpdateForm = ({ userAddress }: { userAddress: UserAddressListTy
     );
 };
 
-export default UserAddressUpdateForm;
+export default ActualizarDireccionUsuarioForm;

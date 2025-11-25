@@ -5,11 +5,7 @@ export const actualizarDatosPersonalesValidation = yup.object({
         .string()
         .required('Dato requerido')
         .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ ]+$/, 'Solo letras y espacios'),
-    apellidoPaterno: yup
-        .string()
-        .required('Dato requerido')
-        .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ ]+$/, 'Solo letras y espacios'),
-    apellidoMaterno: yup
+    apellidos: yup
         .string()
         .required('Dato requerido')
         .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ ]+$/, 'Solo letras y espacios'),

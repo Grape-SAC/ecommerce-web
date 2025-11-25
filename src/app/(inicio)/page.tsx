@@ -1,10 +1,9 @@
+import HomeView from "./view/home-view";
+
 export default function Home() {
   return (
-    <div>
-      <main>
-      </main>
-      <footer>
-      </footer>
-    </div>
+    <main>
+      <HomeView />
+    </main>
   );
 }

@@ -14,7 +14,7 @@ const CarritoView = ({ articulosCarrito }: { articulosCarrito: ArticuloCarritoTy
         <section className={styles.cartContainer}>
             <PageHeader title="Mi Carrito" backHref="/" />
 
-            <div className={styles.articulosCarrito}>
+            <div className={styles.cartItems}>
                 <ul>
                     {articulosCarrito.map((item) => (
                         <ArticuloCarrito key={item.id} item={item} />

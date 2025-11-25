@@ -1,7 +1,6 @@
 export interface CrearCuentaRequestType {
     nombres: string;
-    apellidoPaterno: string;
-    apellidoMaterno: string;
+    apellidos: string;
     correo: string;
     celular: string;
     tipoDocumentoId: string;

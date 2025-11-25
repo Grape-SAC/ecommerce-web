@@ -28,3 +28,8 @@
 .cartIconContainer {
     position: relative;
 }
+
+.active {
+    color: var(--primary-color); 
+    font-weight: 500; 
+}
