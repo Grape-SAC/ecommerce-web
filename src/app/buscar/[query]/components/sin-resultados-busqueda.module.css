@@ -1,0 +1,27 @@
+.emptyContainer {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 16px;
+    gap: 12px;
+}
+
+.illustration {
+    max-width: 260px;
+    height: auto;
+}
+
+.title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #111;
+}
+
+.text {
+    font-size: 1rem;
+    color: #666;
+    max-width: 280px;
+}

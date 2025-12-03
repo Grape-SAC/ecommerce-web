@@ -1,0 +1,89 @@
+.container {
+    padding: 0 15px 15px 15px;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--primary-color);
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.radioContainer {
+    width: 100%;
+}
+
+.radio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}
+
+.summaryContainer {
+    background-color: var(--color-divider-light);
+    border: 1px solid var(--color-divider);
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 24px;
+}
+
+.summaryContainer h2 {
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.summaryItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.summaryItem span {
+    color: var(--color-text-secondary);
+}
+
+.summaryItem:last-child {
+    border-bottom: none;
+}
+
+.summaryDetails {
+    border-top: 2px solid var(--color-divider);
+    padding-top: 8px;
+}
+
+.summaryRow, .summaryTotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    padding: 4px 0;
+}
+
+.summaryTotal strong {
+    font-weight: 500;
+}
+
+.igvNote {
+    font-size: 13px; 
+    color: var(--color-text-secondary); 
+    margin-top: 12px;
+}
+
+.buttonContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0px 10px 10px 10px;
+}
+
+.buttonContainer button {
+    font-size: 13px;
+}

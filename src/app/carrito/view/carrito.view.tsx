@@ -1,18 +1,17 @@
 
 import ArticuloCarrito from '../components/articulo-carrito';
+import CarritoVacio from '../components/carrito-vacio';
 import ResumenCarrito from '../components/resumen-carrito';
 import { ArticuloCarritoType } from '../types/articulo-carrito.type';
 import styles from './carrito.module.css';
-import PageHeader from '@/components/ui/page-header/page-header';
 
 const CarritoView = ({ articulosCarrito }: { articulosCarrito: ArticuloCarritoType[] }) => {
     if (articulosCarrito.length === 0) {
-        return <p>El carrito está vacío.</p>;
+        return <CarritoVacio />;
     }
 
     return (
         <section className={styles.cartContainer}>
-            <PageHeader title="Mi Carrito" backHref="/" />
 
             <div className={styles.cartItems}>
                 <ul>

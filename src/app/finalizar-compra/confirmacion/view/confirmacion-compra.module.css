@@ -1,0 +1,46 @@
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;  /* 🔥 CENTRADO VERTICAL REAL */
+    align-items: center;       /* Centrado horizontal */
+    padding: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+    width: 100%;
+    max-width: 340px;
+}
+
+/* Imagen grande pero controlada */
+.illustration {
+    width: 100%;
+    max-width: 340px;
+    max-height: 45vh;   /* 🔥 La clave para que ocupe LO MÁXIMO sin romper */
+    height: auto;
+    object-fit: contain;
+}
+
+.title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #111;
+}
+
+.text {
+    font-size: 1rem;
+    color: #666;
+    max-width: 320px;
+    line-height: 1.4;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}

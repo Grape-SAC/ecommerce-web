@@ -17,7 +17,12 @@ export async function POST() {
 
   if (!backendRes.ok) return Response.json(null, { status: 401 });
 
-  const data = await backendRes.json();
+  const setCookie = backendRes.headers.get('set-cookie');
 
-  return Response.json(data);
+  return new Response(null, {
+    status: 200,
+    headers: setCookie
+      ? { 'Set-Cookie': setCookie }
+      : {}
+  });
 }

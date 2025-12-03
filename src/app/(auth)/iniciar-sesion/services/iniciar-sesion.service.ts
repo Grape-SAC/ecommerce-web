@@ -29,7 +29,7 @@ export async function iniciarSesion(request: IniciarSesionRequestType): Promise<
 
             throw apiResponse;
         }
-        default:
+        default: {
             const apiResponse: ApiResponseError = {
                 message: 'Algo salió mal. Estamos trabajando para solucionar el problema. Por favor, inténtalo de nuevo más tarde.',
                 status: 'error',
@@ -37,5 +37,6 @@ export async function iniciarSesion(request: IniciarSesionRequestType): Promise<
             };
 
             throw apiResponse;
+        }
     }
 }

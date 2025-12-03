@@ -20,7 +20,7 @@ import {
   EyeIcon,
   MagnifyingGlassIcon,
 } from '@heroicons/react/24/outline';
-import { EstadoPedidoEnum } from '@/app/mis-pedidos/enum/estado-pedido.enum';
+import { EstadoPedidoEnum } from '@/app/mis-pedidos/(lista)/enum/estado-pedido.enum';
 import { DetallePedidoType } from '../types/detalle-pedido.type';
 
 const formatearFecha = (iso: string) =>

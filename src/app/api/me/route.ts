@@ -11,11 +11,11 @@ export async function GET() {
     return Response.json(null, { status: 401 });
   }
 
-  const backendResponse = await fetch(`${process.env.BACKEND_URL}/auth/mi-perfil`, {
+  const backendResponse = await fetch(`${process.env.BACKEND_URL}/auth/obtener-mi-perfil`, {
     headers: {
       Cookie: `access_token=${accessToken}`,
     },
-    credentials: 'include',
+    // credentials: 'include',
   });
 
   if (!backendResponse.ok) {

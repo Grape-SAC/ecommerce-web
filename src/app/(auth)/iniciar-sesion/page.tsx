@@ -1,9 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Alert, Container, Snackbar } from '@mui/material';
-import NProgress from 'nprogress';
 import { IniciarSesionView } from './view/iniciar-sesion.view';
 import { IniciarSesionRequestType } from './types/iniciar-sesion-request.type';
 import { useIniciarSesion } from './hooks/use-iniciar-sesion';
@@ -11,6 +10,10 @@ import InfoModal from '@/components/ui/info-modal/info-modal';
 import { HttpStatus } from '@/shared/enum/http-status';
 
 const IniciarSesionPage = () => {
+    const searchParams = useSearchParams();
+    
+    const nextUrl = searchParams.get("next") ?? "/mi-cuenta";
+
     const router = useRouter();
     const { execute: doLogin, loading, error } = useIniciarSesion();
     const [dialogOpen, setDialogOpen] = useState(false);
@@ -51,7 +54,7 @@ const IniciarSesionPage = () => {
         const ok = await doLogin(data);
 
         if (ok) {
-            router.push('/mi-cuenta');
+            router.push(nextUrl);
         }
     };
 

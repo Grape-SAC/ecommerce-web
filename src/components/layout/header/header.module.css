@@ -1,11 +1,40 @@
+/* ⭐ COMPARTIDO PARA AMBOS HEADERS (PRIMERO) */
+.header,
+.headerWithBack {
+  height: var(--header-height);
+}
+
+/* ⭐ HEADER DEL HOME (LUEGO) */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 1rem;
 }
 
+/* ⭐ HEADER CON BACK (LUEGO) */
+.headerWithBack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* ⭐ BOTÓN ATRÁS */
+.backButton {
+  position: absolute;
+  left: 16px;
+  cursor: pointer;
+}
+
+/* ⭐ TÍTULO CENTRADO */
+.title {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+/* ⭐ SEARCH (se mantiene igual) */
 .search {
   width: 77%;
   position: relative;
@@ -39,10 +68,15 @@
 }
 
 .icon {
-    width: 1.5rem;
-    height: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .cartIconContainer {
-    position: relative;
+  position: relative;
+}
+
+.backIcon {
+    width: 18px;
+    height: 18px;
 }

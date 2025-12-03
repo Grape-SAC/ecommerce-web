@@ -1,9 +1,10 @@
+import SinResultadosBusqueda from "./components/sin-resultados-busqueda";
 import { buscarProducto } from "./services/producto-buscar-service";
 import { ResumenProductoType } from "./types/resumen-producto.type";
 import ListarProductosView from "./view/listar-productos.view";
 
 type BuscarPageProps = {
-  params: Promise<{ query: string }>;
+    params: Promise<{ query: string }>;
 };
 
 const BuscarProductoPage = async (props: BuscarPageProps) => {
@@ -12,7 +13,7 @@ const BuscarProductoPage = async (props: BuscarPageProps) => {
     const productos: ResumenProductoType[] = await buscarProducto(query);
 
     if (productos.length === 0) {
-        return <p>No se encontraron productos.</p>;
+        return <SinResultadosBusqueda />;
     }
 
     return (
