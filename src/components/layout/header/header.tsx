@@ -16,6 +16,9 @@ type HeaderProps = {
     showBack?: boolean;
     title?: string;
     backHref?: string;
+    shadow?: boolean;
+    justify?: "center" | "space-between" | "flex-start" | "flex-end";
+    backAbsolute?: boolean; 
 };
 
 export default function Header({
@@ -25,29 +28,19 @@ export default function Header({
     showBack = false,
     title = "",
     backHref,
+    shadow = false,
+    justify = "space-between",
+    backAbsolute = false
 }: HeaderProps) {
     const [searchTerm, setSearchTerm] = useState('');
     const [isNavigating, setIsNavigating] = useState(false);
     const router = useRouter();
     const pathname = usePathname();
-    const isCheckout = pathname.startsWith("/finalizar-compra");
-    const isIdentificacion = pathname.includes("identificacion");
-    const isEntrega = pathname.includes("entrega");
-    const isPago = pathname.includes("pago");
 
     useEffect(() => {
         // Cada vez que la URL cambie → apagamos el loading
         setIsNavigating(false);
     }, [pathname]);
-
-    const getCheckoutBackHref = () => {
-        if (isIdentificacion) return "/carrito";
-        if (isEntrega) return "/finalizar-compra/identificacion";
-        if (isPago) return "/finalizar-compra/entrega";
-
-        return backHref || null; // fallback por si lo mandaste por prop
-    };
-
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter' && searchTerm.trim() !== '') {
@@ -58,14 +51,6 @@ export default function Header({
 
     const handleBack = () => {
         setIsNavigating(true);
-
-        if (isCheckout) {
-            const href = getCheckoutBackHref();
-            if (href) {
-                router.push(href);
-                return;
-            }
-        }
 
         if (backHref) {
             router.push(backHref);
@@ -80,11 +65,14 @@ export default function Header({
                 <LoadingPage sx={{ position: 'fixed', zIndex: 9999 }} />
             )}
 
-            <header className={showBack ? styles.headerWithBack : styles.header}>
+            <header
+                className={`${styles.header} ${shadow ? styles.shadow : ""}`}
+                style={{ justifyContent: justify }}
+            >
                 {showBack && (
                     <button
                         onClick={handleBack}
-                        className={styles.backButton}
+                        className={`${styles.backButton} ${backAbsolute ? styles.backAbsolute : ""}`}
                     >
                         <ArrowLeftIcon className={styles.backIcon} />
                     </button>
@@ -118,10 +106,10 @@ export default function Header({
                     </div>
                 )}
 
-                {showCart && (
+                {showCart ? (
                     <div className={styles.cart}>
                         <Link
-                            href="/carrito"
+                            href={`/carrito?from=${encodeURIComponent(pathname)}`}
                             aria-label="Ver carrito de compras"
                             onClick={() => setIsNavigating(true)}
                         >
@@ -131,7 +119,7 @@ export default function Header({
                             </div>
                         </Link>
                     </div>
-                )}
+                ) : (<div></div>)}
             </header>
         </>
     );

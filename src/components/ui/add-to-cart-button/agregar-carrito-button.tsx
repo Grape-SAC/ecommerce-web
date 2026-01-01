@@ -30,7 +30,8 @@ const AgregarCarritoButton = ({ producto }: { producto: DetalleProductoType }) =
             }));
         }
 
-        router.push('/carrito');
+        const from = window.location.pathname;
+        router.push(`/carrito?from=${encodeURIComponent(from)}`);
     };
 
     return (

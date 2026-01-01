@@ -4,7 +4,6 @@ import styles from './crear-direccion-usuario-form.module.css';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { TextField, MenuItem, Select, FormControl, InputLabel, Button, Alert, AlertTitle, FormHelperText } from '@mui/material'
-import NProgress from 'nprogress';
 import { useListaDepartamentos } from '@/shared/ubigeo/hooks/use-lista-departamentos';
 import { useListaProvincias } from '@/shared/ubigeo/hooks/use-lista-provincias';
 import { useListaDistritos } from '@/shared/ubigeo/hooks/use-lista-distritos';

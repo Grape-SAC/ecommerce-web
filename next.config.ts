@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  reactStrictMode: false,
   images: {
     remotePatterns: [
       // Para cuando trabajes sin docker (si quieres seguir usando esto)

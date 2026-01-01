@@ -6,7 +6,6 @@ import { iniciarSesion } from '@/app/(auth)/iniciar-sesion/services/iniciar-sesi
 import { IniciarSesionRequestType } from '@/app/(auth)/iniciar-sesion/types/iniciar-sesion-request.type';
 import { crearCuenta } from '../services/crear-cuenta.service';
 import { UsuarioAutenticacionType } from '../../../../shared/types/usuario-autenticacion-response.type';
-import NProgress from 'nprogress';
 
 export function useCrearCuenta() {
     const [error, setError] = useState<string | null>(null);
@@ -16,7 +15,6 @@ export function useCrearCuenta() {
     const execute = useCallback(async (crearCuentaRequest: CrearCuentaRequestType): Promise<boolean> => {
         setError(null);
         setLoading(true);
-        NProgress.start();
         try {
             await crearCuenta(crearCuentaRequest);
 
@@ -33,7 +31,6 @@ export function useCrearCuenta() {
         } catch (e: any) {
             setError(e.message || 'Error desconocido');
             setLoading(false);
-            NProgress.done();
             return false;
         }
     }, [dispatch]);

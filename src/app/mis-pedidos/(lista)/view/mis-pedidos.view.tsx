@@ -9,7 +9,6 @@ import {
     MagnifyingGlassIcon
 } from '@heroicons/react/24/outline';
 
-import PageHeader from "@/components/ui/page-header/page-header";
 import styles from "./mis-pedidos.module.css";
 import { PedidoListaDto } from '../types/pedido-lista.dto';
 import { EstadoPedidoEnum } from '../enum/estado-pedido.enum';
@@ -43,10 +42,6 @@ export default function MisPedidosView({ pedidos }: { pedidos: PedidoListaDto[] 
 
     return (
         <section className={styles.container}>
-            {pedidos.length > 0 && (
-                <PageHeader title="Mis Pedidos" showBackLink={false} />
-            )}
-
             <div className={styles.contentArea}>
                 {pedidos.length === 0 ? (
                     <EstadoVacioPedidos />

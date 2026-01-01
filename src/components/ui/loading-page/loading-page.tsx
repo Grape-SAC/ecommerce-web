@@ -1,12 +1,13 @@
-
-
 import { Box, CircularProgress, SxProps, Theme } from '@mui/material';
 import NProgress from 'nprogress';
 import { useEffect } from 'react';
+import 'nprogress/nprogress.css';
 
 interface Props {
     sx?: SxProps<Theme>; // Aún permitimos sobrescribir si fuera necesario
 }
+
+NProgress.configure({ showSpinner: false });
 
 export const LoadingPage = ({ sx }: Props) => {
     // Inicia la barra de progreso superior

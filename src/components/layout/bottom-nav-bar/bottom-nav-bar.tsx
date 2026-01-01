@@ -44,8 +44,8 @@ export default function BottomNavBar() {
                         </Link>
                     </li>
 
-                    <li className={`${styles.navItem} ${isActive('/favorites') ? styles.active : ''}`}>
-                        <Link href="/favorites">
+                    <li className={`${styles.navItem} ${isActive('/favoritos') ? styles.active : ''}`}>
+                        <Link href="/favoritos" onClick={() => setIsNavigating(true)}>
                             <HeartIcon className={styles.icon} />
                             <span>Favoritos</span>
                         </Link>

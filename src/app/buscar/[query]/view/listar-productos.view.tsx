@@ -2,15 +2,21 @@
 
 import React, { useState } from 'react';
 import styles from './listar-productos.module.css';
-import Image from 'next/image';
 import Link from 'next/link';
 import IndicadorAgregadoAlCarrito from '@/components/ui/added-to-cart-indicator/added-to-cart-indicator';
-import NProgress from 'nprogress';
-import { ResumenProductoType } from '../types/resumen-producto.type';
+import { ResumenProductoType } from '../../../../shared/types/resumen-producto.type';
 import { LoadingPage } from '@/components/ui/loading-page/loading-page';
+import FavoriteButton from '@/components/ui/favorito-button/favorito-button';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { toggleFavorito } from '@/store/slices/favoritos.slice';
 
 const ListarProductosView = ({ productos }: { productos: ResumenProductoType[] }) => {
     const [isNavigating, setIsNavigating] = useState(false);
+    const dispatch = useDispatch();
+    const favoritos = useSelector(
+        (state: RootState) => state.favoritos.productosIds
+    );
 
     return (
         <>
@@ -27,6 +33,11 @@ const ListarProductosView = ({ productos }: { productos: ResumenProductoType[] }
                             }}
                         >
                             <article className={styles.productoCard}>
+                                <FavoriteButton
+                                    isFavorite={favoritos.includes(producto.id)}
+                                    onToggle={() => dispatch(toggleFavorito(producto.id))}
+                                />
+
                                 <img
                                     src={producto.imagenPrincipal}
                                     alt={producto.nombre}

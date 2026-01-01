@@ -5,9 +5,19 @@ import 'swiper/css';
 import { useState, useRef } from 'react';
 import styles from './carrusel-producto.module.css';
 import { ProductoImagenType } from "../types/producto-imagen.type";
-import Image from "next/image";
+import FavoriteButton from "@/components/ui/favorito-button/favorito-button";
 
-const CarruselProductoView = ({ imagenes }: { imagenes: ProductoImagenType[] }) => {
+type Props = {
+    imagenes: ProductoImagenType[];
+    isFavorite: boolean;
+    onToggleFavorite: () => void;
+};
+
+const CarruselProductoView = ({
+    imagenes,
+    isFavorite,
+    onToggleFavorite,
+}: Props) => {
     const [indiceImagenActual, setIndiceImagenActual] = useState(0);
     const swiperRef = useRef<any>(null); // Referencia para la instancia de Swiper
 
@@ -21,7 +31,13 @@ const CarruselProductoView = ({ imagenes }: { imagenes: ProductoImagenType[] }) 
     };
 
     return (
-        <div>
+        <div className={styles.carouselWrapper}>
+            {/* Botón favoritos overlay */}
+            <FavoriteButton
+                isFavorite={isFavorite}
+                onToggle={onToggleFavorite}
+            />
+
             {/* Carrusel de imágenes grandes */}
             <Swiper
                 spaceBetween={10}

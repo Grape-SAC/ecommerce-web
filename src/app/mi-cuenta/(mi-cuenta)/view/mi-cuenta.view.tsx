@@ -1,16 +1,9 @@
-'use client';
-
 import { List, ListItem, ListItemText, Divider, Box, Card, ListItemIcon } from '@mui/material';
 import styles from './mi-cuenta.module.css';
 import Image from 'next/image';
-import { ArrowRightEndOnRectangleIcon, KeyIcon, MapPinIcon, UserIcon } from '@heroicons/react/24/outline';
+import { ArrowRightEndOnRectangleIcon} from '@heroicons/react/24/outline';
 import { UsuarioAutenticacionType } from '@/shared/types/usuario-autenticacion-response.type';
 import { LoadingPage } from '@/components/ui/loading-page/loading-page';
-
-const toTitleCase = (str: string): string => {
-    if (!str) return '';
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-};
 
 interface MiCuentaViewProps {
     usuario: UsuarioAutenticacionType | null;
@@ -31,7 +24,7 @@ const MiCuentaView = ({ usuario, opciones, onOptionClick, onLogoutClick }: MiCue
 
     return (
         <section className={styles.accountContainer}>
-            {/* {!usuario && <LoadingPage />} */}
+            {!usuario && <LoadingPage />}
             <div className={styles.profileContainer}>
                 <Image
                     src="/profile_user.jpg"
@@ -40,8 +33,8 @@ const MiCuentaView = ({ usuario, opciones, onOptionClick, onLogoutClick }: MiCue
                     width={100}
                     height={100}
                 />
-                <h1 className={styles.profileName}>{usuario ? `${toTitleCase(usuario.nombres)} ${toTitleCase(usuario.apellidos)}` : 'Bienvenido'}</h1>
-                <p className={styles.profileEmail}>{usuario ? usuario.correo.toLowerCase() : 'Cargando...'}</p>
+                <h1 className={styles.profileName}>{usuario ? `${toTitleCase(usuario.nombres)} ${toTitleCase(usuario.apellidos)}` : 'Muchas gracias'}</h1>
+                <p className={styles.profileEmail}>{usuario ? usuario.correo.toLowerCase() : 'Vuelva pronto!'}</p>
             </div>
 
             <List>

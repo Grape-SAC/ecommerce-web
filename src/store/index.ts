@@ -4,6 +4,7 @@ import authReducer from './slices/autenticacion.slice';
 import checkoutReducer from './slices/finaliza-compra.slice';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from "redux-persist/lib/storage";
+import favoritosReducer from './slices/favoritos.slice';
 
 const configuracionPersistenciaCarrito = {
     key: "carrito",
@@ -20,15 +21,22 @@ const configuracionPersistenciaFinalizaCompra = {
     storage,
 };
 
+const configuracionPersistenciaFavoritos = {
+  key: 'favoritos',
+  storage,
+};
+
 const carritoPersistido = persistReducer(configuracionPersistenciaCarrito, carritoReducer);
 const authPersistido = persistReducer(configuracionPersistenciaAuth, authReducer);
 const finalizaCompraPersistido = persistReducer(configuracionPersistenciaFinalizaCompra, checkoutReducer);
+const favoritosPersistido = persistReducer(configuracionPersistenciaFavoritos, favoritosReducer);
 
 export const store = configureStore({
     reducer: {
         carrito: carritoPersistido, // Se pueden agregar más reducers aquí en el futuro
         auth: authPersistido,
-        checkout: finalizaCompraPersistido
+        checkout: finalizaCompraPersistido,
+        favoritos: favoritosPersistido
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

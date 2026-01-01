@@ -9,7 +9,7 @@ export default function Layout({
 }) {
   return (
     <div className="layout-grid">
-      <Header />
+      <Header shadow={true} />
       <main className="contenido">{children}</main>
       <BottomNavBar />
     </div>

@@ -1,3 +1,7 @@
+.carouselWrapper {
+    position: relative;
+}
+
 .carouselParent {
     margin-bottom: 10px;
 }

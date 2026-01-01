@@ -14,7 +14,7 @@ export default function Layout({
         showSearch={false}
         showCart={false}
         showBack={false}
-        title="Mis Pedidos"
+        title="Mis Favoritos"
         justify="center"
       />
       <main className="contenido">{children}</main>

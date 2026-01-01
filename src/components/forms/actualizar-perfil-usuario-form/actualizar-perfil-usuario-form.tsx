@@ -6,7 +6,6 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { Button, TextField, FormControl, InputLabel, Select, MenuItem, FormHelperText, Box, Badge } from '@mui/material';
-import NProgress from 'nprogress';
 
 import { useTiposDocumento } from '@/shared/document-types/hooks/use-tipos-documento';
 import InfoModal from '@/components/ui/info-modal/info-modal';

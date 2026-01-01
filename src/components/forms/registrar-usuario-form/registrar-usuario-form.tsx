@@ -1,11 +1,9 @@
 'use client';
 
-import styles from './registrar-usuario-form.module.css';
 import { useRouter } from 'next/navigation';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { TextField, FormControl, InputLabel, MenuItem, Select, FormHelperText, Alert, AlertTitle, Button, Box, Divider, Typography, InputAdornment, SxProps, Theme } from '@mui/material';
-import NProgress from 'nprogress';
 
 import { useTiposDocumento } from '@/shared/document-types/hooks/use-tipos-documento';
 import InfoModal from '@/components/ui/info-modal/info-modal';
@@ -14,7 +12,7 @@ import { CrearCuentaRequestType } from '@/app/(auth)/crear-cuenta/types/crear-cu
 import { crearCuentaValidation } from '@/app/(auth)/crear-cuenta/validation/crear-cuenta.validation';
 import { useCrearCuenta } from '@/app/(auth)/crear-cuenta/hooks/use-crear-cuenta';
 import { LoadingPage } from '@/components/ui/loading-page/loading-page';
-import { CreditCard, Description, Email, Fingerprint, Lock, Person, Smartphone } from '@mui/icons-material';
+import { Description, Email, Fingerprint, Lock, Person, Smartphone } from '@mui/icons-material';
 import BadgeIcon from '@mui/icons-material/Badge';
 
 interface Props {
@@ -242,7 +240,6 @@ const RegistrarUsuarioForm = ({ onStartAsyncOperation, redirectPath = '/mi-cuent
                     variant="outlined" color="secondary"
                     fullWidth
                     onClick={() => {
-                        NProgress.start();
                         router.push('/iniciar-sesion');
                     }}
                 >

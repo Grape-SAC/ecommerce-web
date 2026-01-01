@@ -1,6 +1,6 @@
 import SinResultadosBusqueda from "./components/sin-resultados-busqueda";
-import { buscarProducto } from "./services/producto-buscar-service";
-import { ResumenProductoType } from "./types/resumen-producto.type";
+import { buscarProducto } from "./services/buscar-producto.service";
+import { ResumenProductoType } from "../../../shared/types/resumen-producto.type";
 import ListarProductosView from "./view/listar-productos.view";
 
 type BuscarPageProps = {

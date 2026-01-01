@@ -1,31 +1,24 @@
 /* ⭐ COMPARTIDO PARA AMBOS HEADERS (PRIMERO) */
-.header,
-.headerWithBack {
+.header {
+  display: flex;
+  align-items: center;
   height: var(--header-height);
+  padding: 1rem;
 }
 
 /* ⭐ HEADER DEL HOME (LUEGO) */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-}
-
-/* ⭐ HEADER CON BACK (LUEGO) */
-.headerWithBack {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
+.shadow {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* ⭐ BOTÓN ATRÁS */
 .backButton {
+  width: 35px;
+}
+
+.backAbsolute {
   position: absolute;
   left: 16px;
-  cursor: pointer;
 }
 
 /* ⭐ TÍTULO CENTRADO */
@@ -77,6 +70,6 @@
 }
 
 .backIcon {
-    width: 18px;
-    height: 18px;
+  width: 18px;
+  height: 18px;
 }

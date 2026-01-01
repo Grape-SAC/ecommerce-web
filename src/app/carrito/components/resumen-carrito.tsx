@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./resumen-carrito.module.css";
 import { Button } from "@mui/material";
-import NProgress from 'nprogress';
 import { ArticuloCarritoType } from "../types/articulo-carrito.type";
 import { LoadingPage } from "@/components/ui/loading-page/loading-page";
 

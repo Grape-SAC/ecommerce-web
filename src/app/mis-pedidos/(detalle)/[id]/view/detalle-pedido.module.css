@@ -1,13 +1,12 @@
 .container {
   padding: 0 1rem 5rem;
-  padding: 20px 15px 15px 15px;
+  padding: 0 15px 15px 15px;
 }
 
 .content {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding-top: 20px;
 }
 
 /* Tarjetas generales */

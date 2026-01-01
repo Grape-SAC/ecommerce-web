@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import PageHeader from '@/components/ui/page-header/page-header';
 import styles from './detalle-pedido.module.css';
 
 import {
@@ -92,8 +91,6 @@ export default function DetallePedidoView({ pedido }: { pedido: DetallePedidoTyp
 
   return (
     <section className={styles.container}>
-      <PageHeader title="Detalle del pedido" backHref="/mis-pedidos" />
-
       <div className={styles.content}>
         {/* Resumen de pedido */}
         <article className={styles.card}>

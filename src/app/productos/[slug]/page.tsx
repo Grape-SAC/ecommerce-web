@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { DetalleProductoType } from "./types/detalle-producto.type";
-import { obtenerDetalleProducto } from "./services/producto-detalle-service";
+import { obtenerDetalleProducto } from "./services/obtener-detalle-producto.service";
 import DetalleProductoView from "./view/detalle-producto.view";
 
 export default async function DetalleProductoPage({ params, }: { params: Promise<{ slug: string }>; }) {

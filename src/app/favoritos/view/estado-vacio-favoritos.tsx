@@ -1,24 +1,25 @@
-import Link from "next/link";
-import styles from "./estado-vacio-pedidos.module.css";
 import Image from "next/image";
+import styles from "./estado-vacio-favoritos.module.css";
+import Link from "next/link";
 import { Button } from "@mui/material";
 
-export default function EstadoVacioPedidos() {
+export default function EstadoVacioFavoritos() {
     return (
         <div className={styles.emptyState}>
             <div className={styles.imgWrapper}>
                 <Image
-                    src="/images/sin-pedidos.svg"
-                    alt="Sin pedidos aún"
+                    src="/images/favoritos-vacio.svg"
+                    alt="Sin favoritos aún"
                     fill
                     className={styles.emptyIllustration}
                 />
             </div>
 
-            <h2 className={styles.emptyTitle}>Aún no tienes pedidos</h2>
+            <h2 className={styles.emptyTitle}>No tienes favoritos aún</h2>
 
             <p className={styles.emptyText}>
-                Tus compras aparecerán aquí. ¡Explora nuestro catálogo!
+                Guarda tus productos favoritos tocando el ❤️
+                para encontrarlos fácilmente después.
             </p>
 
             <Link href="/" passHref>

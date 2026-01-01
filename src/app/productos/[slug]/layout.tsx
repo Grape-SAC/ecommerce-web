@@ -1,5 +1,4 @@
 import "@/app/globals.css";
-import BottomNavBar from "@/components/layout/bottom-nav-bar/bottom-nav-bar";
 import Header from "@/components/layout/header/header";
 
 export default function Layout({
@@ -9,9 +8,15 @@ export default function Layout({
 }) {
   return (
     <div className="layout-grid">
-      <Header />
+      <Header
+        showLogo={false}
+        showSearch={true}
+        showCart={true}
+        showBack={true}
+        title=""
+        shadow={true}
+      />
       <main className="contenido">{children}</main>
-      {/* <BottomNavBar /> */}
     </div>
   );
 }

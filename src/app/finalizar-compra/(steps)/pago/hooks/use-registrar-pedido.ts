@@ -1,12 +1,11 @@
 import { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
 import { RegistrarPedidoType } from '../types/registrar-pedido.type';
 import { registrarPedido } from '../services/registrar-pedido.service';
 
 export function useRegistrarPedido() {
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const execute = useCallback(async (request: RegistrarPedidoType, archivoComprobante?: File): Promise<boolean> => {
         setError(null);
@@ -19,7 +18,7 @@ export function useRegistrarPedido() {
             setLoading(false);
             return false;
         }
-    }, [dispatch]);
+    }, []);
 
     return { execute, loading, error };
 }
